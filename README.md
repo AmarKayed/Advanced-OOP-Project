@@ -15,6 +15,8 @@ The main entities of this project are:
 * Address
 * Transaction
 
+Besides the main entities, the project will provide a general Service class, with the purpose of handling the various services of the application, as well as a main class, responsible for calling the before mentioned services.
+
 ## **Classes**
 1. ## Person
     This class represents a base class/superclass for the classes Customer and Employee subclasses. This class models the general attributes of any person, whether it is a customer(client of the bank) or an employee(a person who works for the bank, usually under a contract).
@@ -39,8 +41,31 @@ The main entities of this project are:
 
 
 3. ## Employee
+    This class represents an extension of the Person class, thus denoting that every Employee **IS-A** Person. The Employee class represents the employees of the bank.
+
+    Attributes:
+    * salary == of type float, it represents the monthly net salary of the employee, measured in USD
+    * hireDate == of type String, it represents the date in which the employee got hired/oficially and contractually started working for the bank. The format of the date will be *'dayNumber MONTH yearNumber'*.
+    
+        For example: **'25 MAR 2022'**
+    
 4. ## Account
+    This class represents a base class/superclass for the classes CurrentAccount and SavingsAccount subclasses. This class models the general attributes of any bank account, whether it is a CurrentAccount(used for day-to-day transactions/purposes) or a SavingsAccount(used for saving money).
+
+    Attributes:
+    * IBAN == of type int, the IBAN stands for "International Bank Account Number", meaning that it is basically a unique identification number/code given to an account
+    * openDate == of type String, it represents the date at which the account was opened. This attribute has the same format as Employee.hireDate
+    * holder == object of type Customer, via this object we get all the information about the holder/owner of this bank account
+    * balance == of type float, it represents the current available money/deposit amount associated to the bank account
+
 5. ## CurrentAccount
+    This class derives from the Account superclass. It models the properties of a normal "current account" in a bank. A current account is an account use for normal day-to-day activities. It is meant for both depositing and withdrawing money, as well as spending the available balance.
+
+    Attributes:
+    * commission == of type float, represents the commission rate for the administration of the account. Usually the commission rate is between 1-10%
+    * transactionHistory == a List collection of objects of type Transaction, it represents the list of all the transactions made for the account. The Transaction class will be explained at index #8
+
 6. ## SavingsAccount
+    This class derives from the Account superclass.
 7. ## Address
 8. ## Transaction
