@@ -19,7 +19,7 @@ Besides the main entities, the project will provide a general Service class, wit
 
 ## **Classes**
 1. ## Person
-    This class represents a base class/superclass for the classes Customer and Employee subclasses. This class models the general attributes of any person, whether it is a customer(client of the bank) or an employee(a person who works for the bank, usually under a contract).
+    This class represents a base class/superclass for the classes Customer and Employee subclasses. This class models the general properties of any person, whether it is a customer(client of the bank) or an employee(a person who works for the bank, usually under a contract).
     
     Attributes:
     * id == of type int, it is the equivalent of a Social Security Number or a National Identification Number => it is a unique identity number assigned to each distinct person
@@ -50,7 +50,7 @@ Besides the main entities, the project will provide a general Service class, wit
         For example: **'25 MAR 2022'**
     
 4. ## Account
-    This class represents a base class/superclass for the classes CurrentAccount and SavingsAccount subclasses. This class models the general attributes of any bank account, whether it is a CurrentAccount(used for day-to-day transactions/purposes) or a SavingsAccount(used for saving money).
+    This class represents a base class/superclass for the classes CurrentAccount and SavingsAccount subclasses. This class models the general properties of any bank account, whether it is a CurrentAccount(used for day-to-day transactions/purposes) or a SavingsAccount(used for saving money).
 
     Attributes:
     * IBAN == of type int, the IBAN stands for "International Bank Account Number", meaning that it is basically a unique identification number/code given to an account
@@ -66,6 +66,40 @@ Besides the main entities, the project will provide a general Service class, wit
     * transactionHistory == a List collection of objects of type Transaction, it represents the list of all the transactions made for the account. The Transaction class will be explained at index #8
 
 6. ## SavingsAccount
-    This class derives from the Account superclass.
+    This class derives from the Account superclass. It models the properties of a normal "savings account" in a bank. A savings account is an account with the sole purpose of saving/storing money deposits. Furthermore, it can be used to gain interest on the deposited amount, meaning that the bank will pay the account holder for the deposited money via a specified interest rate. The interest rate represents a percentage of the total amount deposited and is paid in a "Compound Interval". The compound interval is the interval in which the account holder will be paid the interest rate for his/her deposits. The compound interval is usually on a yearly basis, but it can be sooner or later than that.
+
+    Attributes:
+    * interest == of type float, it represents the interest rate for the deposited balance
+    * compoundInterval == of type int, it represents the number of months for which the payment of the interest
+
 7. ## Address
+    This is an auxiliary class, used for storing information about a geographical address. For the sake of simplicity, we considered a valid address being any combination of a country and a city belonging to that country.
+
+    Attributes:
+    * country == of type String, it represents the name of a country
+    * city == of type g, it represents the name of a city belonging to the above mentioned country
+
 8. ## Transaction
+    This class models the main properties of a typical bank transaction. Every transaction must have an IBAN of the account which performs the transaction, as well as a date and an amount. For the sake of simplicity, the bank will perform only three types of transactions:
+    * Deposit: when money is added to the current balance of the account identified by the IBAN
+    * Withdraw: when money is subtracted/taken out of the current balance belonging to the account identified by the IBAN
+    * Transfer: which is essentially withdrawing from one account and depositing into another account.
+
+        > Three **conditions** must be mentioned:
+        >
+        > 1. The bank only performs interchange transactions, meaning that transfers will only occur between account of the same bank, not between different banks
+        > 2. We can identify if a transaction is a deposit or a withdraw by the Transaction.amount attribute:
+        
+        > ```
+        > if Transaction.amount < 0:
+        >     // it is a withdraw, the account is losing money.
+        > else if Transaction.amount > 0:
+        >     // it is a deposit, the account is gaing money.
+        > ``` 
+        > 3. Since a transfer will be considered as two separate transactions, meaning a transfer will be a deposit and a withdraw respectively, we will not be able to identify/differentiate if a deposit/withdraw was a result of a transfer or not.
+
+    Attributes:
+    * IBAN == of type int, representing the account number which performs the transaction
+    * transactionDate == of type String, representing the date in which the transaction was performed. The format of the date is the same as previously mentioned
+
+        
