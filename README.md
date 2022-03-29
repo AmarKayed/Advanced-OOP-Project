@@ -17,6 +17,11 @@ The main entities of this project are:
 
 Besides the main entities, the project will provide a general Service class, with the purpose of handling the various services of the application, as well as a main class, responsible for calling the before mentioned services.
 
+## **Class Hierarchy**
+
+![Diagram Unavailable](https://raw.githubusercontent.com/AmarKayed/Advanced-OOP-Project/stage-1/Banking-Diagram.png "Class Hierarchy")
+
+
 ## **Classes**
 1. ## Person
     This class represents a base class/superclass for the classes Customer and Employee subclasses. This class models the general properties of any person, whether it is a customer(client of the bank) or an employee(a person who works for the bank, usually under a contract).
