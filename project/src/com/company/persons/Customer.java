@@ -5,8 +5,10 @@ import com.company.Address;
 import java.util.Objects;
 
 public class Customer extends Person {
+
     private Address address;
     private String job;
+
 
     public Customer() {
         super();
@@ -22,6 +24,13 @@ public class Customer extends Person {
         this.job = job;
     }
 
+    public Customer(Person ob, Address address, String job){
+        super(ob);
+        this.address = address;
+        this.job = job;
+    }
+
+
     public Address getAddress() {
         return address;
     }
@@ -29,6 +38,15 @@ public class Customer extends Person {
     public void setAddress(Address address) {
         this.address = address;
     }
+
+    public String getJob() {
+        return job;
+    }
+
+    public void setJob(String job) {
+        this.job = job;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -44,10 +62,6 @@ public class Customer extends Person {
         return Objects.hash(super.hashCode(), address, job);
     }
 
-    public String getJob() {
-        return job;
-    }
-
     @Override
     public String toString() {
         return "Customer{" +
@@ -57,13 +71,4 @@ public class Customer extends Person {
                 '}';
     }
 
-    public void setJob(String job) {
-        this.job = job;
-    }
-
-    public Customer(Person ob, Address address, String job){
-        super(ob);
-        this.address = address;
-        this.job = job;
-    }
 }

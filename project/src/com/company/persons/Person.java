@@ -3,11 +3,14 @@ package com.company.persons;
 import java.util.Objects;
 
 public class Person {
+
     private static int nrOfPersons = 0;     // Used for Auto-Incrementing the Person.id attribute
+
     private int id;
     private String firstName;
     private String lastName;
     private char gender;
+
 
     public Person() {
         this.id = ++Person.nrOfPersons;
@@ -27,28 +30,6 @@ public class Person {
         this.gender = ob.getGender();
     }
 
-    @Override
-    public String toString() {
-        return "Person{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", gender=" + gender +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
-        return id == person.id && gender == person.gender && firstName.equals(person.firstName) && lastName.equals(person.lastName);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, firstName, lastName, gender);
-    }
 
     public static int getNrOfPersons() {
         return nrOfPersons;
@@ -88,5 +69,29 @@ public class Person {
 
     public void setGender(char gender) {
         this.gender = gender;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", gender=" + gender +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return id == person.id && gender == person.gender && firstName.equals(person.firstName) && lastName.equals(person.lastName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, gender);
     }
 }
