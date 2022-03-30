@@ -6,13 +6,25 @@ import com.company.persons.Customer;
 import com.company.persons.Employee;
 import com.company.persons.Person;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.Scanner;
+
 
 public class Main {
 
+
     public static void main(String[] args) {
+        Service.getInstance().optionsMenu();    // We first print the "Welcome" menu
+        Scanner in = new Scanner(System.in);
+//        int a = in.nextInt();
+//        System.out.println(a);
+
+    }
+
+
+
+
+
+    public static void oldMain(String[] args) {
 
         String y = new String("something");
         Person x = new Person(y, y, 'M');
