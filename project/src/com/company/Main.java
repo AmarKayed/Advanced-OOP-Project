@@ -1,9 +1,14 @@
 package com.company;
 
 import com.company.accounts.Account;
+import com.company.accounts.CurrentAccount;
 import com.company.persons.Customer;
 import com.company.persons.Employee;
 import com.company.persons.Person;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
 public class Main {
 
@@ -29,6 +34,10 @@ public class Main {
         Account acc = new Account("28 FEB 2019", c, 200);
         c.setLastName("Michael");
         System.out.println(acc);
+
+        CurrentAccount crntacc = new CurrentAccount();
+
+
 
     }
 }
