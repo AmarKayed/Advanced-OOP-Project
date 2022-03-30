@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.accounts.Account;
 import com.company.persons.Customer;
 import com.company.persons.Employee;
 import com.company.persons.Person;
@@ -24,5 +25,10 @@ public class Main {
 
         Employee emp = new Employee(x, 3000, "25 MAR 2022");
         System.out.println(emp);
+
+        Account acc = new Account("28 FEB 2019", c, 200);
+        c.setLastName("Michael");
+        System.out.println(acc);
+
     }
 }

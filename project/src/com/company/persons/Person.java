@@ -6,7 +6,7 @@ public class Person {
 
     private static int nrOfPersons = 0;     // Used for Auto-Incrementing the Person.id attribute
 
-    private int id;
+    private final int id;
     private String firstName;
     private String lastName;
     private char gender;
@@ -43,9 +43,9 @@ public class Person {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+//    public void setId(int id) {
+//        this.id = id;
+//    }
 
     public String getFirstName() {
         return firstName;

@@ -4,3 +4,7 @@ accounts that follow the deleted account in the sorted map be shifted in order
 to close the gap between the accounts.
 
 A person's id number will not be reassigned to another person upon deletion.
+
+When openning an account you can specify an initial balance
+
+The Person.id and Account.IBAN attributes CANNOT BE CHANGED => they're final
