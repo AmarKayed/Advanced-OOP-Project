@@ -20,6 +20,13 @@ public class Person {
         this.gender = gender;
     }
 
+    public Person(Person ob){               // Copy-Constructor
+        this.id = ++Person.nrOfPersons;
+        this.firstName = ob.getFirstName();
+        this.lastName = ob.getLastName();
+        this.gender = ob.getGender();
+    }
+
     @Override
     public String toString() {
         return "Person{" +

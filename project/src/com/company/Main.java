@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.persons.Customer;
 import com.company.persons.Person;
 
 public class Main {
@@ -15,5 +16,10 @@ public class Main {
 
         Address a = new Address("US", "New York City");
         System.out.println(a);
+        Customer c = new Customer(x, a, "Lawyer");
+        x.setLastName("Here");
+        System.out.println(c);
+        System.out.println(x);
+
     }
 }
