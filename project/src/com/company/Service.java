@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.personservices.PersonService;
+
 import java.util.Scanner;
 
 public class Service {
@@ -50,7 +52,6 @@ public class Service {
         System.out.println("\t\tO - for opening a new bank account(current or savings)");
         System.out.println("\t\tH - for printing all the available commands/options of the application");
         System.out.println("\t\tX - for quitting the application");
-        System.out.println("aaaa");
     }
 
 
@@ -60,24 +61,10 @@ public class Service {
 
         switch (selectedOption){
             case "A":
-                System.out.println("\tWhat type of person shall we add:(choose an option using the index number)");
-                System.out.println("\t\t1. Customer");
-                System.out.println("\t\t2. Employee");
-                System.out.println("\tYour choice: ");
-                int choice = selectChoice(2);
-                switch (choice){
-                    case 1:
-                        System.out.println("We're adding a Customer");
-                        break;
-                    case 2:
-                        System.out.println("We're adding an Employee");
-                        break;
-                }
-                System.out.println("Here");
-                sc.nextLine(); // clearing the buffer
+                PersonService.getInstance().addPerson();
                 break;
             case "L":
-                System.out.println();
+                System.out.println(PersonService.getInstance().getPersonList());
                 break;
             case "D":
                 System.out.println();
