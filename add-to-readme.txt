@@ -8,3 +8,4 @@ A person's id number will not be reassigned to another person upon deletion.
 When openning an account you can specify an initial balance
 
 The Person.id and Account.IBAN attributes CANNOT BE CHANGED => they're final
+
