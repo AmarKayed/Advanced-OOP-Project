@@ -2,7 +2,6 @@ package com.company.accounts;
 
 import com.company.Transaction;
 import com.company.persons.Customer;
-import com.company.persons.Employee;
 
 import java.util.*;
 
