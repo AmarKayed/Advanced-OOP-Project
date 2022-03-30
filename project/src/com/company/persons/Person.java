@@ -3,21 +3,31 @@ package com.company.persons;
 import java.util.Objects;
 
 public class Person {
-    private static int nrOfPersons = 0;
+    private static int nrOfPersons = 0;     // Used for Auto-Incrementing the Person.id attribute
     private int id;
-    private String lastName;
     private String firstName;
+    private String lastName;
     private char gender;
 
     public Person() {
         this.id = ++Person.nrOfPersons;
     }
 
-    public Person(String lastName, String firstName, char gender) {
+    public Person(String firstName, String lastName, char gender) {
         this.id = ++Person.nrOfPersons;
-        this.lastName = lastName;
         this.firstName = firstName;
+        this.lastName = lastName;
         this.gender = gender;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", gender=" + gender +
+                '}';
     }
 
     @Override
@@ -25,22 +35,12 @@ public class Person {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return id == person.id && gender == person.gender && lastName.equals(person.lastName) && firstName.equals(person.firstName);
+        return id == person.id && gender == person.gender && firstName.equals(person.firstName) && lastName.equals(person.lastName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, lastName, firstName, gender);
-    }
-
-    @Override
-    public String toString() {
-        return "Person{" +
-                "id=" + id +
-                ", lastName='" + lastName + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", gender=" + gender +
-                '}';
+        return Objects.hash(id, firstName, lastName, gender);
     }
 
     public static int getNrOfPersons() {
@@ -59,20 +59,20 @@ public class Person {
         this.id = id;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
     public String getFirstName() {
         return firstName;
     }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public char getGender() {

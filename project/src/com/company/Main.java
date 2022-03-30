@@ -12,5 +12,8 @@ public class Main {
         System.out.println(x);
         Person z = new Person();
         System.out.println(z);
+
+        Address a = new Address("US", "New York City");
+        System.out.println(a);
     }
 }
