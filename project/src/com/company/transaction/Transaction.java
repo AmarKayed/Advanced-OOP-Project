@@ -1,4 +1,4 @@
-package com.company;
+package com.company.transaction;
 
 import java.util.Objects;
 

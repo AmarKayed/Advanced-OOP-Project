@@ -57,7 +57,7 @@ public class EmployeeService implements EmployeeServiceInterface{
 
     @Override
     public void addEmployee() {
-//        Employee ob = new Employee("Michael", "Jack", 'M', 2000, "22 MAR 20222");
+//        Employee ob = new Employee("Michael", "Jack", 'M', 2000, "22 MAR 2022");
 
         Employee ob = EmployeeService.getInstance().readEmployee();
 

@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.persons.Person;
 import com.company.personservices.PersonService;
 
 import java.util.Scanner;
@@ -65,7 +66,10 @@ public class Service {
                 PersonService.getInstance().addPerson();
                 break;
             case "L":
-                System.out.println(PersonService.getInstance().getPersonList());
+                System.out.println("[");
+                for(Person person : PersonService.getInstance().getPersonList())
+                    System.out.println(person);
+                System.out.println("]");
                 break;
             case "D":
                 System.out.println();

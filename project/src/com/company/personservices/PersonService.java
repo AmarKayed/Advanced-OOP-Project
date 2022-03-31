@@ -41,6 +41,7 @@ public class PersonService implements PersonServiceInterface{
 
         System.out.println("Gender: ");
         ob.setGender(Service.getInstance().getSc().next().charAt(0));   // Reading only the first char
+        Service.getInstance().getSc().nextLine(); // clear the buffer
 
         if(ob.getGender() != 'M' && ob.getGender() != 'F')
             badInput = true;
@@ -48,7 +49,10 @@ public class PersonService implements PersonServiceInterface{
         while(badInput){
             System.out.println("The gender you entered isn't valid. Type 'M' for male or 'F' for female.");
             System.out.println("Gender: ");
+
             ob.setGender(Service.getInstance().getSc().next().charAt(0));   // Reading only the first char
+            Service.getInstance().getSc().nextLine(); // clear the buffer
+
             if(ob.getGender() == 'M' || ob.getGender() == 'F')
                 badInput = false;
         }
@@ -67,6 +71,7 @@ public class PersonService implements PersonServiceInterface{
         switch (choice){
             case 1:
                 System.out.println("We're adding a Customer");
+                CustomerService.getInstance().addCustomer();
                 break;
             case 2:
                 System.out.println("We're adding an Employee");

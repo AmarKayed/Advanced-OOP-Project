@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.transaction.Transaction;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
