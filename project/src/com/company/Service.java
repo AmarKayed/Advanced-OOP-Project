@@ -55,6 +55,7 @@ public class Service {
         System.out.println("\t\tThe options of this application are the following:\n");
         System.out.println("\t\tA - for adding a new person(customer or employee)");
         System.out.println("\t\tL - for listing all the available persons");
+        System.out.println("\t\tU - for updating a person's info");
         System.out.println("\t\tD - for deleting a person");
         System.out.println("\t\tO - for opening a new bank account(current or savings)");
         System.out.println("\t\tC - for listing all the bank's available customers");
@@ -79,7 +80,7 @@ public class Service {
                 PersonService.getInstance().showPersonList();
                 break;
             case "D":
-                System.out.println();
+                PersonService.getInstance().deletePerson();
                 break;
             case "O":
                 AccountService.getInstance().addAccount();

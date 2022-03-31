@@ -62,4 +62,15 @@ public class CustomerService implements CustomerServiceInterface{
 
         CustomerService.getInstance().getCustomerList().add(ob);
     }
+
+    public void deleteCustomer(Customer ob){
+        int index = customerList.indexOf(ob);
+
+        if(index < 0)
+            return;
+
+        customerList.remove(index);
+
+    }
+
 }

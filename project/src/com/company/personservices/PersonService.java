@@ -1,6 +1,7 @@
 package com.company.personservices;
 
 import com.company.Service;
+import com.company.persons.Customer;
 import com.company.persons.Person;
 
 import java.util.ArrayList;
@@ -91,6 +92,22 @@ public class PersonService implements PersonServiceInterface{
     @Override
     public void removeTemporaryObject(){
         Person.setNrOfPersons(Person.getNrOfPersons()-1);
+    }
+
+
+    public void deletePerson(){
+        System.out.println("Choose the person you would like to delete");
+        showPersonList();
+
+        List<Person> personList = getPersonList();
+        int choice = Service.getInstance().selectChoice(personList.size());
+
+        Person toDelete = personList.get(choice - 1);
+        if (toDelete instanceof Customer)
+            CustomerService.getInstance().deleteCustomer((Customer) toDelete);
+
+        personList.remove(choice - 1);
+
     }
 
 

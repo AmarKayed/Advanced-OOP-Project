@@ -15,3 +15,6 @@
 11. Transactions can only be made for CurrentAccount
 
 12. The Transaction.IBAN property is useless if we store the transaction in CurrentAccount.transactionHistory
+13. Transactions shouldn't be edited
+
+14. Include all service class methods in interface

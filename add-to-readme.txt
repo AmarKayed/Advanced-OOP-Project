@@ -10,3 +10,5 @@ When openning an account you can specify an initial balance
 The Person.id and Account.IBAN attributes CANNOT BE CHANGED => they're final
 
 When we have temporary Person objects, we shall redistribute their ID number after they serve their purpose, since their only purpose will be to help create a real usable Person object.
+
+When deleting a customer, all the accounts opened in his name will be also closed.
