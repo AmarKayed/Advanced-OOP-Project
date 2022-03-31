@@ -58,6 +58,7 @@ public class Service {
     public void run(){
         System.out.println("\nYour Command:  ");
         setSelectedOption(getSc().nextLine());
+//        getSc().nextLine(); // clear the buffer
 
         switch (selectedOption){
             case "A":
@@ -86,6 +87,7 @@ public class Service {
 
     public int selectChoice(int limit){
         float choice = sc.nextFloat();
+        sc.nextLine(); // clear the buffer
         boolean badInput = true;
         while(badInput) {
             if(choice > limit)
@@ -97,6 +99,9 @@ public class Service {
             if(badInput) {
                 System.out.println("\tPlease try again: ");
                 choice = sc.nextFloat();
+                sc.nextLine(); // clear the buffer
+
+
             }
         }
         return (int) choice;

@@ -26,6 +26,38 @@ public class PersonService implements PersonServiceInterface{
         return personList;
     }
 
+    @Override
+    public Person readPerson(){
+        Person ob = new Person();
+        boolean badInput = false;
+
+        System.out.println("First Name: ");
+        String firstName = Service.getInstance().getSc().nextLine();
+        ob.setFirstName(firstName);
+
+        System.out.println("Last Name: ");
+        String lasttName = Service.getInstance().getSc().nextLine();
+        ob.setLastName(lasttName);
+
+        System.out.println("Gender: ");
+        ob.setGender(Service.getInstance().getSc().next().charAt(0));   // Reading only the first char
+
+        if(ob.getGender() != 'M' && ob.getGender() != 'F')
+            badInput = true;
+
+        while(badInput){
+            System.out.println("The gender you entered isn't valid. Type 'M' for male or 'F' for female.");
+            System.out.println("Gender: ");
+            ob.setGender(Service.getInstance().getSc().next().charAt(0));   // Reading only the first char
+            if(ob.getGender() == 'M' || ob.getGender() == 'F')
+                badInput = false;
+        }
+
+
+        return ob;
+    }
+
+    @Override
     public void addPerson(){
         System.out.println("\tWhat type of person shall we add:(choose an option using the index number)");
         System.out.println("\t\t1. Customer");
@@ -41,7 +73,8 @@ public class PersonService implements PersonServiceInterface{
                 EmployeeService.getInstance().addEmployee();
                 break;
         }
-        System.out.println("Here");
-        Service.getInstance().getSc().nextLine(); // clearing the buffer
+        System.out.println("Back to addPerson()");
+//        Service.getInstance().getSc().nextLine(); // clearing the buffer
     }
+
 }
