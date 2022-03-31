@@ -95,7 +95,7 @@ public class AccountService implements AccountServiceInterface{
         switch (choice){
             case 1:
                 System.out.println("We're opening a Current Account");
-//                CurrentAccountService.getInstance().addCurrentAccount();
+                CurrentAccountService.getInstance().addCurrentAccount();
 //                CustomerService.getInstance().addCustomer();
                 break;
             case 2:

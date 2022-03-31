@@ -1,9 +1,12 @@
 package com.company;
 
 import com.company.accountservices.AccountService;
+import com.company.accountservices.CurrentAccountService;
 import com.company.persons.Person;
 import com.company.personservices.CustomerService;
 import com.company.personservices.PersonService;
+import com.company.transaction.Transaction;
+import com.company.transaction.TransactionService;
 
 import java.util.Scanner;
 
@@ -56,6 +59,8 @@ public class Service {
         System.out.println("\t\tO - for opening a new bank account(current or savings)");
         System.out.println("\t\tC - for listing all the bank's available customers");
         System.out.println("\t\tB - for listing all the open bank accounts");
+        System.out.println("\t\tQ - for listing all the open current accounts");
+        System.out.println("\t\tT - for adding a new transaction");
         System.out.println("\t\tH - for printing all the available commands/options of the application");
         System.out.println("\t\tX - for quitting the application");
     }
@@ -85,6 +90,12 @@ public class Service {
             case "B":
                 AccountService.getInstance().showAccounts();
                 break;
+            case "Q":
+                CurrentAccountService.getInstance().showCurrentAcountList();
+                break;
+            case "T":
+                TransactionService.getInstance().readTransaction();
+                break;
             case "H":
                 Service.getInstance().optionsMenu(false);
                 break;
@@ -104,6 +115,8 @@ public class Service {
         while(badInput) {
             if(choice > limit)
                 System.out.println("\tThe supplied index MUST be smaller than " + limit);
+            else if(choice < 1)
+                System.out.println("\t The supplied index MUST be greater than 0");
             else if(choice - (int) choice != 0)
                 System.out.println("\tThe supplied index MUST be an integer from the interval [1, " + limit + "]");
             else

@@ -11,16 +11,23 @@ public class CurrentAccount extends Account{
     private List<Transaction> transactionHistory;
 
 
-    public CurrentAccount() {}
+    public CurrentAccount() {transactionHistory = new ArrayList<>();}
 
     public CurrentAccount(String openDate, Customer holder, float initialBalance) {
         super(openDate, holder, initialBalance);
+        transactionHistory = new ArrayList<>();
     }
 
     public CurrentAccount(String openDate, Customer holder, float initialBalance, float commission, List<Transaction> transactionHistory) {
         super(openDate, holder, initialBalance);
         this.commission = commission;
         this.transactionHistory = transactionHistory;
+    }
+
+    public CurrentAccount(Account ob, float commission) {
+        super(ob);
+        this.commission = commission;
+        transactionHistory = new ArrayList<>();
     }
 
     public CurrentAccount(Account ob, float commission, List<Transaction> transactionHistory) {
