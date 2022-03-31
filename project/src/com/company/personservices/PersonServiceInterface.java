@@ -8,5 +8,5 @@ public interface PersonServiceInterface {
 
     public void addPerson();
 
-//    public void removeTemporaryObject();
+    public void removeTemporaryObject();
 }

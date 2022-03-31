@@ -36,8 +36,8 @@ public class PersonService implements PersonServiceInterface{
         ob.setFirstName(firstName);
 
         System.out.println("Last Name: ");
-        String lasttName = Service.getInstance().getSc().nextLine();
-        ob.setLastName(lasttName);
+        String lastName = Service.getInstance().getSc().nextLine();
+        ob.setLastName(lastName);
 
         System.out.println("Gender: ");
         ob.setGender(Service.getInstance().getSc().next().charAt(0));   // Reading only the first char
@@ -53,7 +53,7 @@ public class PersonService implements PersonServiceInterface{
                 badInput = false;
         }
 
-
+        removeTemporaryObject();    // So that the ID's remain in normal logical order
         return ob;
     }
 
@@ -76,5 +76,11 @@ public class PersonService implements PersonServiceInterface{
         System.out.println("Back to addPerson()");
 //        Service.getInstance().getSc().nextLine(); // clearing the buffer
     }
+
+    @Override
+    public void removeTemporaryObject(){
+        Person.setNrOfPersons(Person.getNrOfPersons()-1);
+    }
+
 
 }
