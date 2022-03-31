@@ -26,6 +26,12 @@ public class PersonService implements PersonServiceInterface{
         return personList;
     }
 
+    public void showPersonList(){
+        int index = 1;
+        for(Person person : PersonService.getInstance().getPersonList())
+            System.out.println(index++ + ". " + person);
+    }
+
     @Override
     public Person readPerson(){
         Person ob = new Person();

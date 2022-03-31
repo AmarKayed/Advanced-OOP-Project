@@ -7,16 +7,36 @@ import com.company.persons.Customer;
 import com.company.persons.Employee;
 import com.company.persons.Person;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CustomerService implements CustomerServiceInterface{
 
     private static CustomerService instance;
 
-    private CustomerService(){}
+    private ArrayList<Customer> customerList;
+
+    private CustomerService() {customerList = new ArrayList<Customer>();}
 
     public static CustomerService getInstance(){
         if(instance == null)
             instance = new CustomerService();
         return instance;
+    }
+
+    public ArrayList<Customer> getCustomerList() {
+        return customerList;
+    }
+
+    public void setCustomerList(ArrayList<Customer> customerList) {
+        this.customerList = customerList;
+    }
+
+
+    public void showCustomerList(){
+        int index = 1;
+        for(Customer customer : CustomerService.getInstance().getCustomerList())
+            System.out.println(index++ + ". " + customer);
     }
 
     @Override
@@ -39,5 +59,7 @@ public class CustomerService implements CustomerServiceInterface{
         Customer ob = CustomerService.getInstance().readCustomer();
 
         PersonService.getInstance().getPersonList().add(ob);
+
+        CustomerService.getInstance().getCustomerList().add(ob);
     }
 }

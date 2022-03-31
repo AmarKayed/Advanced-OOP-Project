@@ -9,3 +9,5 @@
 7. Delete DraftClassIgnore.java after finishing the code
 8. Decide which class has which collection(Map or ArrayList)
 9. Sort TransactionHistory based on TransactionDate
+
+10. Add rule: ONLY CUSTOMERS who are already inserted into the app may open an account

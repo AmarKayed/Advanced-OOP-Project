@@ -66,10 +66,7 @@ public class Service {
                 PersonService.getInstance().addPerson();
                 break;
             case "L":
-                System.out.println("[");
-                for(Person person : PersonService.getInstance().getPersonList())
-                    System.out.println(person);
-                System.out.println("]");
+                PersonService.getInstance().showPersonList();
                 break;
             case "D":
                 System.out.println();
