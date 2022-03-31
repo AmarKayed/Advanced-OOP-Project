@@ -64,7 +64,8 @@ public class CurrentAccount extends Account{
     @Override
     public String toString() {
         return "CurrentAccount{" +
-                "commission=" + commission +
+                super.toString() +
+                ", commission=" + commission +
                 ", transactionHistory=" + transactionHistory +
                 '}';
     }

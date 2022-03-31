@@ -11,6 +11,7 @@ import com.company.personservices.PersonService;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class AccountService implements AccountServiceInterface{
 
@@ -28,6 +29,13 @@ public class AccountService implements AccountServiceInterface{
 
     public HashMap<Integer, Account> getAccountHashMap() {
         return accountHashMap;
+    }
+
+
+    public void showAccounts(){
+        int index = 1;
+        for(Map.Entry me : AccountService.getInstance().getAccountHashMap().entrySet())
+            System.out.println(index++ + ". Key: " + me.getKey() + "   Value: " + me.getValue());
     }
 
 
@@ -49,7 +57,7 @@ public class AccountService implements AccountServiceInterface{
         ArrayList<Customer> customerList = CustomerService.getInstance().getCustomerList();
         int choice = Service.getInstance().selectChoice(customerList.size());
 
-        ob.setHolder(customerList.get(choice));
+        ob.setHolder(customerList.get(choice - 1));
 
         float balance;
         boolean badInput = false;
@@ -72,7 +80,7 @@ public class AccountService implements AccountServiceInterface{
         }
         ob.setBalance(balance);
 
-//        removeTemporaryObject();    // So that the ID's remain in normal logical order
+        removeTemporaryObject();    // So that the ID's remain in normal logical order
 
         return ob;
 
@@ -92,7 +100,7 @@ public class AccountService implements AccountServiceInterface{
                 break;
             case 2:
                 System.out.println("We're opening a Savings Account");
-//                SavingsAccountService.getInstance().addSavingsAccount();
+                SavingsAccountService.getInstance().addSavingsAccount();
 //                EmployeeService.getInstance().addEmployee();
                 break;
         }

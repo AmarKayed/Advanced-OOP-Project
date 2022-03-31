@@ -1,6 +1,8 @@
 package com.company;
 
+import com.company.accountservices.AccountService;
 import com.company.persons.Person;
+import com.company.personservices.CustomerService;
 import com.company.personservices.PersonService;
 
 import java.util.Scanner;
@@ -43,14 +45,17 @@ public class Service {
 
     // Methods:
 
-    public void optionsMenu(){
-        System.out.println("\t\t\tWelcome to the best Java project you'll ever see!");
-        System.out.println();
+    public void optionsMenu(boolean title){
+        if(title)
+            System.out.println("\t\t\tWelcome to the best Java project you'll ever see!\n");
+
         System.out.println("\t\tThe options of this application are the following:\n");
         System.out.println("\t\tA - for adding a new person(customer or employee)");
         System.out.println("\t\tL - for listing all the available persons");
         System.out.println("\t\tD - for deleting a person");
         System.out.println("\t\tO - for opening a new bank account(current or savings)");
+        System.out.println("\t\tC - for listing all the bank's available customers");
+        System.out.println("\t\tB - for listing all the open bank accounts");
         System.out.println("\t\tH - for printing all the available commands/options of the application");
         System.out.println("\t\tX - for quitting the application");
     }
@@ -72,10 +77,16 @@ public class Service {
                 System.out.println();
                 break;
             case "O":
-                System.out.println();
+                AccountService.getInstance().addAccount();
+                break;
+            case "C":
+                CustomerService.getInstance().showCustomerList();
+                break;
+            case "B":
+                AccountService.getInstance().showAccounts();
                 break;
             case "H":
-                System.out.println();
+                Service.getInstance().optionsMenu(false);
                 break;
             case "X":
                 return;
