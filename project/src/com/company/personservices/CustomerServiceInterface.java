@@ -8,4 +8,8 @@ public interface CustomerServiceInterface {
 
     public void addCustomer();
 
+    public void updateCustomer(Customer toUpdate);
+
+    public void deleteCustomer(Customer toDelete);
+
 }

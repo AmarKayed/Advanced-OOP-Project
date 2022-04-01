@@ -8,5 +8,5 @@ public interface EmployeeServiceInterface{
 
     public void addEmployee();
 
-    public void updateEmployee(Employee ob);
+    public void updateEmployee(Employee toUpdate);
 }

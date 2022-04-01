@@ -27,4 +27,25 @@ public class AddressService implements AddressServiceInterface{
         Address ob = new Address(country, city);
         return ob;
     }
+
+    @Override
+    public void updateAdress(Address toUpdate){
+        System.out.println("Country: " + toUpdate.getCountry());
+        System.out.println("City Update Value: ");
+        String country;
+        country = Service.getInstance().getSc().nextLine();
+
+        if (!country.equals("_keep"))
+            toUpdate.setCountry(country);
+
+        System.out.println("City: " + toUpdate.getCity());
+        System.out.println("City Update Value: ");
+        String city;
+        city = Service.getInstance().getSc().nextLine();
+
+        if(!city.equals("_keep"))
+            toUpdate.setCity(city);
+
+    }
+
 }

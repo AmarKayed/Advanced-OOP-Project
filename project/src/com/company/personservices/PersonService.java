@@ -151,7 +151,7 @@ public class PersonService implements PersonServiceInterface{
         // Verify if we need to update Customer or Employee as well:
 
         if (toUpdate instanceof Customer)
-            System.out.println("Customer");
+            CustomerService.getInstance().updateCustomer((Customer) toUpdate);
         else if(toUpdate instanceof Employee)
             EmployeeService.getInstance().updateEmployee((Employee) toUpdate);
 

@@ -65,6 +65,21 @@ public class CustomerService implements CustomerServiceInterface{
         CustomerService.getInstance().getCustomerList().add(ob);
     }
 
+    public void updateCustomer(Customer toUpdate){
+        AddressService.getInstance().updateAdress(toUpdate.getAddress());
+
+        System.out.println("Job: " + toUpdate.getJob());
+        System.out.println("Job Update Value: ");
+        String job;
+        job = Service.getInstance().getSc().nextLine();
+
+        if (!job.equals("_keep"))
+            toUpdate.setJob(job);
+
+    }
+
+
+
     public void deleteCustomer(Customer ob){
         int index = customerList.indexOf(ob);
 
@@ -102,5 +117,7 @@ public class CustomerService implements CustomerServiceInterface{
         customerList.remove(index);
 
     }
+
+
 
 }
