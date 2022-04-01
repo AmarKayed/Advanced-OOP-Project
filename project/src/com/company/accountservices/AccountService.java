@@ -11,6 +11,7 @@ import com.company.personservices.PersonService;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AccountService implements AccountServiceInterface{
@@ -112,6 +113,30 @@ public class AccountService implements AccountServiceInterface{
     @Override
     public void removeTemporaryObject(){
         Account.setNrOfAccounts(Account.getNrOfAccounts() - 1);
+    }
+
+    public void closeAccount(int key){
+        HashMap<Integer, Account> accountHashMap = getAccountHashMap();
+        accountHashMap.remove(key);
+    }
+
+    public void deleteAccount(){
+        System.out.println("Choose the account that you would like to close:");
+
+        showAccounts();
+
+        int choice = Service.getInstance().selectChoice(accountHashMap.size());
+
+        // Find the key corresponding to the choice
+        int index = 1;
+        int key = 0;
+        for(Map.Entry me : accountHashMap.entrySet())
+            if (index++ == choice)
+                key = (int) me.getKey();
+
+
+        System.out.println();
+        closeAccount(key);
     }
 
 }

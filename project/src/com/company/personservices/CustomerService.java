@@ -1,14 +1,16 @@
 package com.company.personservices;
 
 import com.company.Service;
+import com.company.accounts.Account;
+import com.company.accounts.CurrentAccount;
+import com.company.accountservices.AccountService;
 import com.company.address.Address;
 import com.company.address.AddressService;
 import com.company.persons.Customer;
 import com.company.persons.Employee;
 import com.company.persons.Person;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class CustomerService implements CustomerServiceInterface{
 
@@ -68,6 +70,34 @@ public class CustomerService implements CustomerServiceInterface{
 
         if(index < 0)
             return;
+
+        // We first close all open accounts
+
+        int possibleID = 0;
+        int key = 0;
+
+        HashMap<Integer, Account> map = AccountService.getInstance().getAccountHashMap();
+        Set<Integer> removeKeys = new HashSet<>();          // We cannot remove multiple keys unless we store them in a Set/Collection
+
+
+        for(Map.Entry me : map.entrySet()){
+
+                possibleID = ((Account) me.getValue()).getHolder().getId();
+                if (ob.getId() == possibleID) {
+
+//                    map.remove(me.getKey());              // We CANNOT REMOVE KEYS INDIVIDUALLY IN A FOR LOOP
+                    removeKeys.add((Integer) me.getKey());
+
+                }
+            }
+
+        map.keySet().removeAll(removeKeys);
+        System.out.println();
+        System.out.println("After deleting person " + ob.getFirstName() + " " + ob.getLastName() + ", we also closed all his open bank accounts.");
+        System.out.println("Remaining Accounts:\n");
+        AccountService.getInstance().showAccounts();
+
+//        AccountService.getInstance().closeAccount(index);
 
         customerList.remove(index);
 

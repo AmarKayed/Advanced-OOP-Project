@@ -61,6 +61,7 @@ public class Service {
         System.out.println("\t\tC - for listing all the bank's available customers");
         System.out.println("\t\tB - for listing all the open bank accounts");
         System.out.println("\t\tQ - for listing all the open current accounts");
+        System.out.println("\t\tK - for closing an open bank account");
         System.out.println("\t\tT - for adding a new transaction");
         System.out.println("\t\tH - for printing all the available commands/options of the application");
         System.out.println("\t\tX - for quitting the application");
@@ -93,6 +94,9 @@ public class Service {
                 break;
             case "Q":
                 CurrentAccountService.getInstance().showCurrentAcountList();
+                break;
+            case "K":
+                AccountService.getInstance().deleteAccount();
                 break;
             case "T":
                 TransactionService.getInstance().readTransaction();
