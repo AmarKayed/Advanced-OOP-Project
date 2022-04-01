@@ -1,7 +1,9 @@
 package com.company.personservices;
 
 import com.company.Service;
+import com.company.accounts.CurrentAccount;
 import com.company.persons.Customer;
+import com.company.persons.Employee;
 import com.company.persons.Person;
 
 import java.util.ArrayList;
@@ -45,24 +47,44 @@ public class PersonService implements PersonServiceInterface{
         System.out.println("Last Name: ");
         String lastName = Service.getInstance().getSc().nextLine();
         ob.setLastName(lastName);
+//        System.out.println("HEEEEEEEEEEEERRRRRRRRRRREEEEEEEE");
+//        System.out.println("Gender: ");
+//        ob.setGender(Service.getInstance().getSc().next().charAt(0));   // Reading only the first char
+//        Service.getInstance().getSc().nextLine(); // clear the buffer
+//
+//        if(ob.getGender() != 'M' && ob.getGender() != 'F')
+//            badInput = true;
+//
+//        while(badInput){
+//            System.out.println("The gender you entered isn't valid. Type 'M' for male or 'F' for female.");
+//            System.out.println("Gender: ");
+//
+//            ob.setGender(Service.getInstance().getSc().next().charAt(0));   // Reading only the first char
+//            Service.getInstance().getSc().nextLine(); // clear the buffer
+//
+//            if(ob.getGender() == 'M' || ob.getGender() == 'F')
+//                badInput = false;
+//        }
 
-        System.out.println("Gender: ");
-        ob.setGender(Service.getInstance().getSc().next().charAt(0));   // Reading only the first char
-        Service.getInstance().getSc().nextLine(); // clear the buffer
-
-        if(ob.getGender() != 'M' && ob.getGender() != 'F')
+        String gender;
+        gender = Service.getInstance().getSc().nextLine();
+        if (gender.length() == 0)
+            badInput = true;
+        else if(gender.charAt(0) != 'M' && gender.charAt(0) != 'F')
             badInput = true;
 
         while(badInput){
             System.out.println("The gender you entered isn't valid. Type 'M' for male or 'F' for female.");
             System.out.println("Gender: ");
 
-            ob.setGender(Service.getInstance().getSc().next().charAt(0));   // Reading only the first char
-            Service.getInstance().getSc().nextLine(); // clear the buffer
+            gender = Service.getInstance().getSc().nextLine();
 
-            if(ob.getGender() == 'M' || ob.getGender() == 'F')
-                badInput = false;
+            if(gender.length() > 0)
+                if(gender.charAt(0) == 'M' || gender.charAt(0) == 'F')
+                    badInput = false;
         }
+
+        ob.setGender(gender.charAt(0));
 
         removeTemporaryObject();    // So that the ID's remain in normal logical order
         return ob;
@@ -88,15 +110,73 @@ public class PersonService implements PersonServiceInterface{
         System.out.println("Back to addPerson()");
 //        Service.getInstance().getSc().nextLine(); // clearing the buffer
     }
-
     @Override
-    public void removeTemporaryObject(){
-        Person.setNrOfPersons(Person.getNrOfPersons()-1);
+    public void updatePerson(){
+        System.out.println("Choose the person you would like to update: ");
+        showPersonList();
+
+        List<Person> personList = getPersonList();
+        int choice = Service.getInstance().selectChoice(personList.size());
+        Person toUpdate = personList.get(choice - 1);
+
+        System.out.println("The fields that can be updated will be printed below.");
+        System.out.println("If you choose to keep the current value of the field you may type \"_keep\".");
+
+        System.out.println("First Name: " + toUpdate.getFirstName());
+        System.out.println("First Name Update Value: ");
+        String firstName;
+        firstName = Service.getInstance().getSc().nextLine();
+        if(!firstName.equals("_keep"))
+            toUpdate.setFirstName(firstName);
+
+        System.out.println("Last Name: " + toUpdate.getLastName());
+        System.out.println("Last Name Update Value: ");
+        String lastName;
+        lastName = Service.getInstance().getSc().nextLine();
+        if(!lastName.equals("_keep"))
+            toUpdate.setLastName(lastName);
+
+
+        System.out.println("Gender: " + toUpdate.getGender());
+        System.out.println("Gender Update Value: ");
+        String gender;
+        gender = Service.getInstance().getSc().nextLine();
+
+        boolean badInput = false;
+
+        if(!gender.equals("_keep")){
+
+            if (gender.length() == 0)
+                badInput = true;
+            else if(gender.charAt(0) != 'M' && gender.charAt(0) != 'F')
+                badInput = true;
+
+            while(badInput){
+                System.out.println("The gender you entered isn't valid. Type 'M' for male or 'F' for female.");
+                System.out.println("Gender Update Value: ");
+
+                gender = Service.getInstance().getSc().nextLine();
+
+                if(gender.length() > 0)
+                    if(gender.charAt(0) == 'M' || gender.charAt(0) == 'F')
+                        badInput = false;
+            }
+            toUpdate.setGender(gender.charAt(0));
+        }
+
+        // Verify if we need to update Customer or Employee as well:
+
+        if (toUpdate instanceof Customer)
+            System.out.println("Customer");
+        else if(toUpdate instanceof Employee)
+            System.out.println("Employee");
+
     }
 
 
+    @Override
     public void deletePerson(){
-        System.out.println("Choose the person you would like to delete");
+        System.out.println("Choose the person you would like to delete: ");
         showPersonList();
 
         List<Person> personList = getPersonList();
@@ -110,5 +190,8 @@ public class PersonService implements PersonServiceInterface{
 
     }
 
-
+    @Override
+    public void removeTemporaryObject(){
+        Person.setNrOfPersons(Person.getNrOfPersons()-1);
+    }
 }

@@ -8,5 +8,9 @@ public interface PersonServiceInterface {
 
     public void addPerson();
 
+    public void updatePerson();
+
+    public void deletePerson();
+
     public void removeTemporaryObject();
 }

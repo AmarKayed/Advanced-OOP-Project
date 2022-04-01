@@ -80,6 +80,9 @@ public class Service {
             case "L":
                 PersonService.getInstance().showPersonList();
                 break;
+            case "U":
+                PersonService.getInstance().updatePerson();
+                break;
             case "D":
                 PersonService.getInstance().deletePerson();
                 break;
