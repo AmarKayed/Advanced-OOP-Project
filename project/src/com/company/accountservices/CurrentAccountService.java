@@ -6,8 +6,11 @@ import com.company.accounts.CurrentAccount;
 import com.company.accounts.SavingsAccount;
 import com.company.persons.Person;
 import com.company.personservices.PersonService;
+import com.company.transaction.Transaction;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class CurrentAccountService implements CurrentAccountServiceInterface{
 
@@ -77,5 +80,48 @@ public class CurrentAccountService implements CurrentAccountServiceInterface{
         getCurrentAccountList().add(ob);
 
     }
+
+    @Override
+    public List<Transaction> chooseTransactionHistory(){
+        System.out.println("Choose the current account corresponding to the transaction history that ou would like to sort:");
+        showCurrentAcountList();
+        int choice = Service.getInstance().selectChoice(currentAccountList.size());
+
+        CurrentAccount chosenAccount = currentAccountList.get(choice - 1);
+
+        return chosenAccount.getTransactionHistory();
+    }
+
+    @Override
+    public void sortTransactionHistory(){
+
+        List<Transaction> chooseTransactionHistory = chooseTransactionHistory();
+
+        Collections.sort(chooseTransactionHistory);
+
+        for(Transaction t : chooseTransactionHistory)
+            System.out.println(t);
+    }
+    @Override
+    public void depositTransactions(){
+        List<Transaction> chooseTransactionHistory = chooseTransactionHistory();
+
+        for(Transaction t: chooseTransactionHistory)
+            if(t.getAmount() >= 0)
+                System.out.println(t);
+
+    }
+
+
+    @Override
+    public void withdrawTransactions(){
+
+        List<Transaction> chooseTransactionHistory = chooseTransactionHistory();
+
+        for(Transaction t: chooseTransactionHistory)
+            if(t.getAmount() < 0)
+                System.out.println(t);
+    }
+
 
 }

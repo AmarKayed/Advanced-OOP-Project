@@ -32,15 +32,21 @@ public class AccountService implements AccountServiceInterface{
         return accountHashMap;
     }
 
+    public void closeAccount(int key){
+        HashMap<Integer, Account> accountHashMap = getAccountHashMap();
+        accountHashMap.remove(key);
+    }
 
+
+    // Interface Methods:
+
+
+    @Override
     public void showAccounts(){
         int index = 1;
         for(Map.Entry me : AccountService.getInstance().getAccountHashMap().entrySet())
             System.out.println(index++ + ". Key: " + me.getKey() + "   Value: " + me.getValue());
     }
-
-
-    // Interface Methods:
 
     @Override
     public Account readAccount(){
@@ -87,6 +93,7 @@ public class AccountService implements AccountServiceInterface{
 
     }
 
+    @Override
     public void addAccount(){
         System.out.println("\tWhat type of bank account shall we open:(choose an option using the index number)");
         System.out.println("\t\t1. Current Account");
@@ -110,16 +117,8 @@ public class AccountService implements AccountServiceInterface{
     }
 
 
+
     @Override
-    public void removeTemporaryObject(){
-        Account.setNrOfAccounts(Account.getNrOfAccounts() - 1);
-    }
-
-    public void closeAccount(int key){
-        HashMap<Integer, Account> accountHashMap = getAccountHashMap();
-        accountHashMap.remove(key);
-    }
-
     public void deleteAccount(){
         System.out.println("Choose the account that you would like to close:");
 
@@ -137,6 +136,11 @@ public class AccountService implements AccountServiceInterface{
 
         System.out.println();
         closeAccount(key);
+    }
+
+    @Override
+    public void removeTemporaryObject(){
+        Account.setNrOfAccounts(Account.getNrOfAccounts() - 1);
     }
 
 }
