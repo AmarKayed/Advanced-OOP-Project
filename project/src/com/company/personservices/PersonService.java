@@ -47,25 +47,9 @@ public class PersonService implements PersonServiceInterface{
         System.out.println("Last Name: ");
         String lastName = Service.getInstance().getSc().nextLine();
         ob.setLastName(lastName);
-//        System.out.println("HEEEEEEEEEEEERRRRRRRRRRREEEEEEEE");
-//        System.out.println("Gender: ");
-//        ob.setGender(Service.getInstance().getSc().next().charAt(0));   // Reading only the first char
-//        Service.getInstance().getSc().nextLine(); // clear the buffer
-//
-//        if(ob.getGender() != 'M' && ob.getGender() != 'F')
-//            badInput = true;
-//
-//        while(badInput){
-//            System.out.println("The gender you entered isn't valid. Type 'M' for male or 'F' for female.");
-//            System.out.println("Gender: ");
-//
-//            ob.setGender(Service.getInstance().getSc().next().charAt(0));   // Reading only the first char
-//            Service.getInstance().getSc().nextLine(); // clear the buffer
-//
-//            if(ob.getGender() == 'M' || ob.getGender() == 'F')
-//                badInput = false;
-//        }
 
+
+        System.out.println("Gender: ");
         String gender;
         gender = Service.getInstance().getSc().nextLine();
         if (gender.length() == 0)
@@ -169,7 +153,7 @@ public class PersonService implements PersonServiceInterface{
         if (toUpdate instanceof Customer)
             System.out.println("Customer");
         else if(toUpdate instanceof Employee)
-            System.out.println("Employee");
+            EmployeeService.getInstance().updateEmployee((Employee) toUpdate);
 
     }
 
