@@ -2,6 +2,7 @@ package com.company.accountservices;
 
 import com.company.Service;
 import com.company.accounts.Account;
+import com.company.accounts.CurrentAccount;
 import com.company.accounts.SavingsAccount;
 import com.company.persons.Customer;
 import com.company.persons.Person;
@@ -50,19 +51,41 @@ public class AccountService implements AccountServiceInterface{
 
     @Override
     public Account readAccount(){
+        boolean chooseAccount = true;  // Variable which determines whether we should choose a holder or not for our account
+        int choice = 1; // Initially, we consider the chosen holder as being the first one that was added
+        ArrayList<Customer> customerList = CustomerService.getInstance().getCustomerList();
+
+        if(customerList.isEmpty()){
+
+            System.out.println("There are no customers for which we can open a new bank account.");
+            System.out.println("Would you like to first add a customer?");
+            System.out.println("Type \"yes\" for adding a new customer or \"no\" for aborting the opening of a new bank account:");
+
+            String answer = Service.getInstance().yesOrNo();
+
+            if(answer.equals("no")){
+                System.out.println("No bank account will be opened.");
+                return null;
+            }
+            else if(answer.equals("yes")){
+                chooseAccount = false;
+                System.out.println("We're adding a Customer");
+                CustomerService.getInstance().addCustomer();
+            }
+        }
+
         Account ob = new Account();
 
         System.out.println("Open Date: ");
         String openDate = Service.getInstance().getSc().nextLine();
         ob.setOpenDate(openDate);
 
-        System.out.println("Holder: (must be a customer)");
-        System.out.println("\tAvailable Customers: (choose based on index number)");
-        CustomerService.getInstance().showCustomerList();
-//        ArrayList<Person> personList = (ArrayList<Person>) PersonService.getInstance().getPersonList();     // Downcasting
-
-        ArrayList<Customer> customerList = CustomerService.getInstance().getCustomerList();
-        int choice = Service.getInstance().selectChoice(customerList.size());
+        if(chooseAccount){
+            System.out.println("Holder: (must be a customer)");
+            System.out.println("\tAvailable Customers: (choose based on index number)");
+            CustomerService.getInstance().showCustomerList();
+            choice = Service.getInstance().selectChoice(customerList.size());
+        }
 
         ob.setHolder(customerList.get(choice - 1));
 
@@ -104,12 +127,10 @@ public class AccountService implements AccountServiceInterface{
             case 1:
                 System.out.println("We're opening a Current Account");
                 CurrentAccountService.getInstance().addCurrentAccount();
-//                CustomerService.getInstance().addCustomer();
                 break;
             case 2:
                 System.out.println("We're opening a Savings Account");
                 SavingsAccountService.getInstance().addSavingsAccount();
-//                EmployeeService.getInstance().addEmployee();
                 break;
         }
         System.out.println("Back to addAccount()");

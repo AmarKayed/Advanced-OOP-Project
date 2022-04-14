@@ -48,6 +48,41 @@ public class Service {
 
     // Methods:
 
+    public int selectChoice(int limit){
+        float choice = sc.nextFloat();
+        sc.nextLine(); // clear the buffer
+        boolean badInput = true;
+        while(badInput) {
+            if(choice > limit)
+                System.out.println("\tThe supplied index MUST be smaller than " + limit);
+            else if(choice < 1)
+                System.out.println("\t The supplied index MUST be greater than 0");
+            else if(choice - (int) choice != 0)
+                System.out.println("\tThe supplied index MUST be an integer from the interval [1, " + limit + "]");
+            else
+                badInput = false;
+            if(badInput) {
+                System.out.println("\tPlease try again: ");
+                choice = sc.nextFloat();
+                sc.nextLine(); // clear the buffer
+
+
+            }
+        }
+        return (int) choice;
+    }
+
+    public String yesOrNo(){
+        System.out.print("Your answer: ");
+        String answer = getInstance().getSc().nextLine();
+        while(!answer.equals("yes") && !answer.equals("no")){
+            System.out.println("The answer must be either \"yes\" or \"no\". Please type another answer.");
+            System.out.print("Your answer: ");
+            answer = Service.getInstance().getSc().nextLine();
+        }
+        return answer;
+    }
+
     public void optionsMenu(boolean title){
         if(title)
             System.out.println("\t\t\tWelcome to the best Java project you'll ever see!\n");
@@ -127,31 +162,4 @@ public class Service {
         }
         run();
     }
-
-    public int selectChoice(int limit){
-        float choice = sc.nextFloat();
-        sc.nextLine(); // clear the buffer
-        boolean badInput = true;
-        while(badInput) {
-            if(choice > limit)
-                System.out.println("\tThe supplied index MUST be smaller than " + limit);
-            else if(choice < 1)
-                System.out.println("\t The supplied index MUST be greater than 0");
-            else if(choice - (int) choice != 0)
-                System.out.println("\tThe supplied index MUST be an integer from the interval [1, " + limit + "]");
-            else
-                badInput = false;
-            if(badInput) {
-                System.out.println("\tPlease try again: ");
-                choice = sc.nextFloat();
-                sc.nextLine(); // clear the buffer
-
-
-            }
-        }
-        return (int) choice;
-    }
-
-
-
 }

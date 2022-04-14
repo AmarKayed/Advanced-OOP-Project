@@ -10,7 +10,7 @@ public interface CurrentAccountServiceInterface {
 
     public CurrentAccount readCurrentAccount();
 
-    public void addCurrentAccount();
+    public boolean addCurrentAccount();     // returns true if it was successful, false otherwise
 
     public List<Transaction> chooseTransactionHistory();
 

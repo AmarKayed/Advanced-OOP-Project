@@ -38,7 +38,8 @@ public class CurrentAccountService implements CurrentAccountServiceInterface{
     public CurrentAccount readCurrentAccount(){
 
         Account a = AccountService.getInstance().readAccount();    // We don't need to create a new object, we can reference the returned one
-
+        if(a == null)
+            return null;
         float commission;
         boolean badInput = false;
         System.out.println("Commission Rate: ");
@@ -69,12 +70,17 @@ public class CurrentAccountService implements CurrentAccountServiceInterface{
 
 
     @Override
-    public void addCurrentAccount(){
+    public boolean addCurrentAccount(){     // returns true if it was successful, false otherwise
         CurrentAccount ob = readCurrentAccount();
 
-        AccountService.getInstance().getAccountHashMap().put(ob.getIban(), ob);
+        if(ob != null){
+            AccountService.getInstance().getAccountHashMap().put(ob.getIban(), ob);
 
-        getCurrentAccountList().add(ob);
+            getCurrentAccountList().add(ob);
+
+            return true;
+        }
+        else return false;
 
     }
 
