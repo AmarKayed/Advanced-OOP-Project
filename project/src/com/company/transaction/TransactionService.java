@@ -37,7 +37,7 @@ public class TransactionService implements TransactionServiceInterface{
         float amount = Service.getInstance().getSc().nextFloat();
         Service.getInstance().getSc().nextLine();       // clear the buffer
 
-        Transaction ob = new Transaction(currentAccountList.get(choice - 1).getIBAN(), transactionDate, amount);
+        Transaction ob = new Transaction(currentAccountList.get(choice - 1).getIban(), transactionDate, amount);
 
         // Now that we've created the transaction, we must include it in the transactionHistory of the selected currentAccount
 

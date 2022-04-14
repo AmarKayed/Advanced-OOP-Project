@@ -8,25 +8,25 @@ public class Account {
 
     private static int nrOfAccounts = 0;
 
-    private final int IBAN;
+    private final int iban;
     private String openDate;
     private Customer holder;
     float balance;
 
 
     public Account() {
-        this.IBAN = ++Account.nrOfAccounts;
+        this.iban = ++Account.nrOfAccounts;
     }
 
     public Account(String openDate, Customer holder, float initialBalance) {
-        this.IBAN = ++Account.nrOfAccounts;
+        this.iban = ++Account.nrOfAccounts;
         this.openDate = openDate;
         this.holder = holder;
         this.balance = initialBalance;
     }
 
     public Account(Account ob){
-        this.IBAN = ++Account.nrOfAccounts;
+        this.iban = ++Account.nrOfAccounts;
         this.openDate = ob.getOpenDate();
         this.holder = ob.getHolder();
         this.balance = ob.getBalance();
@@ -41,13 +41,9 @@ public class Account {
         Account.nrOfAccounts = nrOfAccounts;
     }
 
-    public int getIBAN() {
-        return IBAN;
+    public int getIban() {
+        return iban;
     }
-
-//    public void setIBAN(int IBAN) {
-//        this.IBAN = IBAN;
-//    }
 
     public String getOpenDate() {
         return openDate;
@@ -79,18 +75,18 @@ public class Account {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Account account = (Account) o;
-        return IBAN == account.IBAN && Float.compare(account.balance, balance) == 0 && Objects.equals(openDate, account.openDate) && Objects.equals(holder, account.holder);
+        return iban == account.iban && Float.compare(account.balance, balance) == 0 && Objects.equals(openDate, account.openDate) && Objects.equals(holder, account.holder);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(IBAN, openDate, holder, balance);
+        return Objects.hash(iban, openDate, holder, balance);
     }
 
     @Override
     public String toString() {
         return "Account{" +
-                "IBAN=" + IBAN +
+                "IBAN=" + iban +
                 ", openDate='" + openDate + '\'' +
                 ", holder=" + holder +
                 ", balance=" + balance +

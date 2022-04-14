@@ -4,21 +4,21 @@ import java.util.*;
 
 public class Transaction implements Comparable{
 
-    private final int IBAN;
+    private final int iban;
     private String transactionDate;
     private float amount;
 
     private static List<String> monthList = new ArrayList<String>(Arrays.asList("JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV","DEC" ));
 
 
-    public Transaction(int IBAN, String transactionDate, float amount) {
-        this.IBAN = IBAN;
+    public Transaction(int iban, String transactionDate, float amount) {
+        this.iban = iban;
         this.transactionDate = transactionDate;
         this.amount = amount;
     }
 
-    public int getIBAN() {
-        return IBAN;
+    public int getIban() {
+        return iban;
     }
 
     public String getTransactionDate() {
@@ -42,18 +42,18 @@ public class Transaction implements Comparable{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Transaction that = (Transaction) o;
-        return IBAN == that.IBAN && Float.compare(that.amount, amount) == 0 && Objects.equals(transactionDate, that.transactionDate);
+        return iban == that.iban && Float.compare(that.amount, amount) == 0 && Objects.equals(transactionDate, that.transactionDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(IBAN, transactionDate, amount);
+        return Objects.hash(iban, transactionDate, amount);
     }
 
     @Override
     public String toString() {
         return "Transaction{" +
-                "IBAN=" + IBAN +
+                "IBAN=" + iban +
                 ", transactionDate='" + transactionDate + '\'' +
                 ", amount=" + amount +
                 '}';

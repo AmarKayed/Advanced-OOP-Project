@@ -3,9 +3,6 @@ package com.company.accountservices;
 import com.company.Service;
 import com.company.accounts.Account;
 import com.company.accounts.SavingsAccount;
-import com.company.persons.Employee;
-import com.company.persons.Person;
-import com.company.personservices.PersonService;
 
 public class SavingsAccountService implements SavingsAccountServiceInterface{
 
@@ -77,6 +74,6 @@ public class SavingsAccountService implements SavingsAccountServiceInterface{
 
         SavingsAccount ob = readSavingsAccount();
 
-        AccountService.getInstance().getAccountHashMap().put(ob.getIBAN(), ob);
+        AccountService.getInstance().getAccountHashMap().put(ob.getIban(), ob);
     }
 }

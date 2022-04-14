@@ -3,9 +3,6 @@ package com.company.accountservices;
 import com.company.Service;
 import com.company.accounts.Account;
 import com.company.accounts.CurrentAccount;
-import com.company.accounts.SavingsAccount;
-import com.company.persons.Person;
-import com.company.personservices.PersonService;
 import com.company.transaction.Transaction;
 
 import java.util.ArrayList;
@@ -75,7 +72,7 @@ public class CurrentAccountService implements CurrentAccountServiceInterface{
     public void addCurrentAccount(){
         CurrentAccount ob = readCurrentAccount();
 
-        AccountService.getInstance().getAccountHashMap().put(ob.getIBAN(), ob);
+        AccountService.getInstance().getAccountHashMap().put(ob.getIban(), ob);
 
         getCurrentAccountList().add(ob);
 
