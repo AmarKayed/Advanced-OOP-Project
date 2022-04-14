@@ -4,7 +4,7 @@ import com.company.accounts.Account;
 
 public interface AccountServiceInterface {
 
-    public void showAccounts();
+    public boolean showAccounts();
 
     public Account readAccount();
 

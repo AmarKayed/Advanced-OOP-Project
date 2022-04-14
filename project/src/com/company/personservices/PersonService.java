@@ -29,10 +29,15 @@ public class PersonService implements PersonServiceInterface{
         return personList;
     }
 
-    public void showPersonList(){
+    public boolean showPersonList(){
+        if(getPersonList().isEmpty()){
+            System.out.println("No person has been added.");
+            return false;
+        }
         int index = 1;
         for(Person person : PersonService.getInstance().getPersonList())
             System.out.println(index++ + ". " + person);
+        return true;
     }
 
     @Override
@@ -96,10 +101,16 @@ public class PersonService implements PersonServiceInterface{
     }
     @Override
     public void updatePerson(){
+        List<Person> personList = getPersonList();
+
+        if(personList.isEmpty()) {
+            System.out.println("No person has been added.");
+            return;
+        }
+
         System.out.println("Choose the person you would like to update: ");
         showPersonList();
 
-        List<Person> personList = getPersonList();
         int choice = Service.getInstance().selectChoice(personList.size());
         Person toUpdate = personList.get(choice - 1);
 
@@ -160,10 +171,16 @@ public class PersonService implements PersonServiceInterface{
 
     @Override
     public void deletePerson(){
+        List<Person> personList = getPersonList();
+
+        if(personList.isEmpty()) {
+            System.out.println("No person has been added.");
+            return;
+        }
+
         System.out.println("Choose the person you would like to delete: ");
         showPersonList();
 
-        List<Person> personList = getPersonList();
         int choice = Service.getInstance().selectChoice(personList.size());
 
         Person toDelete = personList.get(choice - 1);

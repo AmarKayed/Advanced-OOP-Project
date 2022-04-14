@@ -2,10 +2,8 @@ package com.company;
 
 import com.company.accountservices.AccountService;
 import com.company.accountservices.CurrentAccountService;
-import com.company.persons.Person;
 import com.company.personservices.CustomerService;
 import com.company.personservices.PersonService;
-import com.company.transaction.Transaction;
 import com.company.transaction.TransactionService;
 
 import java.util.Scanner;
@@ -134,7 +132,7 @@ public class Service {
                 AccountService.getInstance().showAccounts();
                 break;
             case "Q":
-                CurrentAccountService.getInstance().showCurrentAcountList();
+                CurrentAccountService.getInstance().showCurrentAccountList();
                 break;
             case "K":
                 AccountService.getInstance().deleteAccount();

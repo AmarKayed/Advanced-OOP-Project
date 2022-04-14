@@ -52,7 +52,7 @@ public class TransactionService implements TransactionServiceInterface{
 
         if(chooseAccount){
             System.out.println("Select the current account for which the transaction will be made: ");
-            CurrentAccountService.getInstance().showCurrentAcountList();
+            CurrentAccountService.getInstance().showCurrentAccountList();
             choice = Service.getInstance().selectChoice(currentAccountList.size());
         }
         else

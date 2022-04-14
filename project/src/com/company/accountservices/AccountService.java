@@ -43,10 +43,15 @@ public class AccountService implements AccountServiceInterface{
 
 
     @Override
-    public void showAccounts(){
+    public boolean showAccounts(){
+        if(getAccountHashMap().isEmpty()){
+            System.out.println("No account has been opened yet.");
+            return false;
+        }
         int index = 1;
         for(Map.Entry me : AccountService.getInstance().getAccountHashMap().entrySet())
             System.out.println(index++ + ". Key: " + me.getKey() + "   Value: " + me.getValue());
+        return true;
     }
 
     @Override
@@ -71,6 +76,7 @@ public class AccountService implements AccountServiceInterface{
                 chooseAccount = false;
                 System.out.println("We're adding a Customer");
                 CustomerService.getInstance().addCustomer();
+                System.out.println("The customer has been added successfully! Back to opening the bank account: ");
             }
         }
 
@@ -141,6 +147,10 @@ public class AccountService implements AccountServiceInterface{
 
     @Override
     public void deleteAccount(){
+        if(getAccountHashMap().isEmpty()){
+            System.out.println("No account has been opened yet and thus no account can be closed.");
+            return;
+        }
         System.out.println("Choose the account that you would like to close:");
 
         showAccounts();

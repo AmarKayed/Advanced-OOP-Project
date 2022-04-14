@@ -31,7 +31,7 @@ public class AddressService implements AddressServiceInterface{
     @Override
     public void updateAdress(Address toUpdate){
         System.out.println("Country: " + toUpdate.getCountry());
-        System.out.println("City Update Value: ");
+        System.out.println("Country Update Value: ");
         String country;
         country = Service.getInstance().getSc().nextLine();
 

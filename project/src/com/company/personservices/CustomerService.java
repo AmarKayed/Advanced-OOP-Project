@@ -36,6 +36,10 @@ public class CustomerService implements CustomerServiceInterface{
 
 
     public void showCustomerList(){
+        if(getCustomerList().isEmpty()){
+            System.out.println("The bank doesn't have any customers yet.");
+            return;
+        }
         int index = 1;
         for(Customer customer : CustomerService.getInstance().getCustomerList())
             System.out.println(index++ + ". " + customer);

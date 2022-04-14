@@ -26,10 +26,15 @@ public class CurrentAccountService implements CurrentAccountServiceInterface{
         return currentAccountList;
     }
 
-    public void showCurrentAcountList(){
+    public boolean showCurrentAccountList(){
+        if(getCurrentAccountList().isEmpty()){
+            System.out.println("No current account has been opened yet.");
+            return false;
+        }
         int index = 1;
         for(CurrentAccount current : CurrentAccountService.getInstance().getCurrentAccountList())
             System.out.println(index++ + ". " + current);
+        return true;
     }
 
     // Interface Methods:
@@ -53,7 +58,7 @@ public class CurrentAccountService implements CurrentAccountServiceInterface{
 
         while(badInput){
 
-            System.out.println("The commission rate is a percentage, hense it must be between 0 and 100%. Please type another commission rate.");
+            System.out.println("The commission rate is a percentage, hence it must be between 0 and 100%. Please type another commission rate.");
             System.out.println("Commission Rate: ");
 
             commission = Service.getInstance().getSc().nextFloat();
@@ -86,8 +91,12 @@ public class CurrentAccountService implements CurrentAccountServiceInterface{
 
     @Override
     public List<Transaction> chooseTransactionHistory(){
+        if(getCurrentAccountList().isEmpty()){
+            System.out.println("There are no current accounts open yet. Hence, there have been no transactions made.");
+            return null;
+        }
         System.out.println("Choose the current account corresponding to the transaction history that ou would like to sort:");
-        showCurrentAcountList();
+        showCurrentAccountList();
         int choice = Service.getInstance().selectChoice(currentAccountList.size());
 
         CurrentAccount chosenAccount = currentAccountList.get(choice - 1);
@@ -98,18 +107,23 @@ public class CurrentAccountService implements CurrentAccountServiceInterface{
     @Override
     public void sortTransactionHistory(){
 
-        List<Transaction> chooseTransactionHistory = chooseTransactionHistory();
+        List<Transaction> chosenTransactionHistory = chooseTransactionHistory();
+        if(chosenTransactionHistory == null)
+            return;
 
-        Collections.sort(chooseTransactionHistory);
+        Collections.sort(chosenTransactionHistory);
 
-        for(Transaction t : chooseTransactionHistory)
+        for(Transaction t : chosenTransactionHistory)
             System.out.println(t);
     }
     @Override
     public void depositTransactions(){
-        List<Transaction> chooseTransactionHistory = chooseTransactionHistory();
+        List<Transaction> chosenTransactionHistory = chooseTransactionHistory();
 
-        for(Transaction t: chooseTransactionHistory)
+        if(chosenTransactionHistory == null)
+            return;
+
+        for(Transaction t: chosenTransactionHistory)
             if(t.getAmount() >= 0)
                 System.out.println(t);
 
@@ -119,9 +133,12 @@ public class CurrentAccountService implements CurrentAccountServiceInterface{
     @Override
     public void withdrawTransactions(){
 
-        List<Transaction> chooseTransactionHistory = chooseTransactionHistory();
+        List<Transaction> chosenTransactionHistory = chooseTransactionHistory();
 
-        for(Transaction t: chooseTransactionHistory)
+        if(chosenTransactionHistory == null)
+            return;
+
+        for(Transaction t: chosenTransactionHistory)
             if(t.getAmount() < 0)
                 System.out.println(t);
     }
