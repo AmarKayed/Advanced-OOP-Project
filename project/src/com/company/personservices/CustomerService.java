@@ -45,6 +45,7 @@ public class CustomerService implements CustomerServiceInterface{
             System.out.println(index++ + ". " + customer);
     }
 
+/*
     @Override
     public Customer readCustomer(){
         Person p = PersonService.getInstance().readPerson();    // We don't need to create a new object, we can reference the returned one
@@ -56,6 +57,23 @@ public class CustomerService implements CustomerServiceInterface{
         job = Service.getInstance().getSc().nextLine();
 
         Customer ob = new Customer(p, a, job);
+        return ob;
+    }
+*/
+
+    @Override
+    public Customer readCustomer() {
+        Customer ob = new Customer();
+        PersonService.getInstance().readPerson(ob);
+
+        Address a = AddressService.getInstance().readAddress();
+        ob.setAddress(a);
+
+        String job;
+        System.out.println("Job: ");
+        job = Service.getInstance().getSc().nextLine();
+        ob.setJob(job);
+
         return ob;
     }
 

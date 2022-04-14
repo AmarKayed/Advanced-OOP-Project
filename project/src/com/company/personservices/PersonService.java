@@ -41,8 +41,8 @@ public class PersonService implements PersonServiceInterface{
     }
 
     @Override
-    public Person readPerson(){
-        Person ob = new Person();
+    public Person readPerson(Person ob){
+//        Person ob = new Person();
         boolean badInput = false;
 
         System.out.println("First Name: ");

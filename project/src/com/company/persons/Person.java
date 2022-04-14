@@ -2,11 +2,11 @@ package com.company.persons;
 
 import java.util.Objects;
 
-public class Person {
+public abstract class Person {
 
     private static int nrOfPersons = 0;     // Used for Auto-Incrementing the Person.id attribute
 
-    private final int id;
+    private int id;
     private String firstName;
     private String lastName;
     private char gender;
@@ -42,10 +42,6 @@ public class Person {
     public int getId() {
         return id;
     }
-
-//    public void setId(int id) {
-//        this.id = id;
-//    }
 
     public String getFirstName() {
         return firstName;

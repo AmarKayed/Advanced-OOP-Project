@@ -95,7 +95,7 @@ public class DraftClassIgnore {
 
 
 
-
+/*
     public static void oldMain(String[] args) {
 
         String y = new String("something");
@@ -124,5 +124,5 @@ public class DraftClassIgnore {
 
 
     }
-
+*/
 }

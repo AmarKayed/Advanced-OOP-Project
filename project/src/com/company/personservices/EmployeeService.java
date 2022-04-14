@@ -19,8 +19,12 @@ public class EmployeeService implements EmployeeServiceInterface{
 
     @Override
     public Employee readEmployee(){
-        Person p = PersonService.getInstance().readPerson();    // We don't need to create a new object, we can reference the returned one
+//        Person p = PersonService.getInstance().readPerson();    // We don't need to create a new object, we can reference the returned one
 //        System.out.println("HERE " + p.getId());
+
+        Employee ob = new Employee();
+        PersonService.getInstance().readPerson(ob);
+
         float salary;
         String hireDate;
         boolean badInput = false;
@@ -43,11 +47,13 @@ public class EmployeeService implements EmployeeServiceInterface{
             if(salary >= 0)
                 badInput = false;
         }
+        ob.setSalary(salary);
 
         System.out.println("hireDate: ");
         hireDate = Service.getInstance().getSc().nextLine();
+        ob.setHireDate(hireDate);
 
-        Employee ob = new Employee(p, salary, hireDate);
+//        Employee ob = new Employee(p, salary, hireDate);
 //        PersonService.getInstance().removeTemporaryObject();    // So that the ID's remain in normal logical order
         return ob;
     }

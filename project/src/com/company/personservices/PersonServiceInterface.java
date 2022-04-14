@@ -4,7 +4,7 @@ import com.company.persons.Person;
 
 public interface PersonServiceInterface {
 
-    public Person readPerson();
+    public Person readPerson(Person ob);
 
     public void addPerson();
 
