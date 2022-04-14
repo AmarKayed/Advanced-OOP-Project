@@ -4,7 +4,7 @@ import com.company.persons.Customer;
 
 import java.util.Objects;
 
-public class Account {
+public abstract class Account {
 
     private static int nrOfAccounts = 0;
 

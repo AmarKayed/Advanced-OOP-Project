@@ -75,7 +75,6 @@ public class PersonService implements PersonServiceInterface{
 
         ob.setGender(gender.charAt(0));
 
-        removeTemporaryObject();    // So that the ID's remain in normal logical order
         return ob;
     }
 
@@ -191,8 +190,4 @@ public class PersonService implements PersonServiceInterface{
 
     }
 
-    @Override
-    public void removeTemporaryObject(){
-        Person.setNrOfPersons(Person.getNrOfPersons()-1);
-    }
 }

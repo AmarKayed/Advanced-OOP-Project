@@ -55,8 +55,8 @@ public class AccountService implements AccountServiceInterface{
     }
 
     @Override
-    public Account readAccount(){
-        boolean chooseAccount = true;  // Variable which determines whether we should choose a holder or not for our account
+    public Account readAccount(Account ob){
+        boolean chooseCustomer = true;  // Variable which determines whether we should choose a holder or not for our account
         int choice = 1; // Initially, we consider the chosen holder as being the first one that was added
         ArrayList<Customer> customerList = CustomerService.getInstance().getCustomerList();
 
@@ -73,20 +73,19 @@ public class AccountService implements AccountServiceInterface{
                 return null;
             }
             else if(answer.equals("yes")){
-                chooseAccount = false;
+                chooseCustomer = false;
                 System.out.println("We're adding a Customer");
                 CustomerService.getInstance().addCustomer();
                 System.out.println("The customer has been added successfully! Back to opening the bank account: ");
             }
         }
 
-        Account ob = new Account();
 
         System.out.println("Open Date: ");
         String openDate = Service.getInstance().getSc().nextLine();
         ob.setOpenDate(openDate);
 
-        if(chooseAccount){
+        if(chooseCustomer){
             System.out.println("Holder: (must be a customer)");
             System.out.println("\tAvailable Customers: (choose based on index number)");
             CustomerService.getInstance().showCustomerList();
@@ -115,8 +114,6 @@ public class AccountService implements AccountServiceInterface{
                 badInput = false;
         }
         ob.setBalance(balance);
-
-        removeTemporaryObject();    // So that the ID's remain in normal logical order
 
         return ob;
 
@@ -167,11 +164,6 @@ public class AccountService implements AccountServiceInterface{
 
         System.out.println();
         closeAccount(key);
-    }
-
-    @Override
-    public void removeTemporaryObject(){
-        Account.setNrOfAccounts(Account.getNrOfAccounts() - 1);
     }
 
 }

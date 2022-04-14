@@ -42,9 +42,12 @@ public class CurrentAccountService implements CurrentAccountServiceInterface{
     @Override
     public CurrentAccount readCurrentAccount(){
 
-        Account a = AccountService.getInstance().readAccount();    // We don't need to create a new object, we can reference the returned one
-        if(a == null)
+        CurrentAccount ob = new CurrentAccount();
+        AccountService.getInstance().readAccount(ob);
+
+        if(ob == null)
             return null;
+
         float commission;
         boolean badInput = false;
         System.out.println("Commission Rate: ");
@@ -68,7 +71,7 @@ public class CurrentAccountService implements CurrentAccountServiceInterface{
                 badInput = false;
         }
 
-        CurrentAccount ob = new CurrentAccount(a, commission);
+        ob.setCommission(commission);
 
         return ob;
     }

@@ -6,12 +6,10 @@ public interface AccountServiceInterface {
 
     public boolean showAccounts();
 
-    public Account readAccount();
+    public Account readAccount(Account ob);
 
     public void addAccount();
 
     public void deleteAccount();
-
-    public void removeTemporaryObject();
 
 }

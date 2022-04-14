@@ -12,5 +12,4 @@ public interface PersonServiceInterface {
 
     public void deletePerson();
 
-    public void removeTemporaryObject();
 }

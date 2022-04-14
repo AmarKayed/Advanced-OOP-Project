@@ -20,7 +20,8 @@ public class SavingsAccountService implements SavingsAccountServiceInterface{
     @Override
     public SavingsAccount readSavingsAccount(){
 
-        Account a = AccountService.getInstance().readAccount();    // We don't need to create a new object, we can reference the returned one
+        SavingsAccount ob = new SavingsAccount();
+        AccountService.getInstance().readAccount(ob);
 
         float interest;
         float compoundInterval;
@@ -45,6 +46,8 @@ public class SavingsAccountService implements SavingsAccountServiceInterface{
             if(interest >= 0 && interest <= 100)
                 badInput = false;
         }
+        ob.setInterest(interest);
+
 
         System.out.println("Compound Interval: (in number of months)");
         compoundInterval = Service.getInstance().getSc().nextInt();
@@ -63,7 +66,7 @@ public class SavingsAccountService implements SavingsAccountServiceInterface{
                 badInput = false;
         }
 
-        SavingsAccount ob = new SavingsAccount(a, interest, (int) compoundInterval);
+        ob.setCompoundInterval((int) compoundInterval);
 
         return ob;
 
