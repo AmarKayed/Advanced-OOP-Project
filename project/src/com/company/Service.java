@@ -131,34 +131,34 @@ public class Service {
 
         switch (selectedOption){
             case "A":
-                personService.addPerson();
+                personService.add();
                 break;
             case "L":
-                personService.showPersonList();
+                personService.show();
                 break;
             case "U":
-                personService.updatePerson();
+                personService.update();
                 break;
             case "D":
-                personService.deletePerson();
+                personService.delete();
                 break;
             case "O":
-                accountService.addAccount();
+                accountService.add();
                 break;
             case "C":
-                customerService.showCustomerList();
+                customerService.show();
                 break;
             case "B":
-                accountService.showAccounts();
+                accountService.show();
                 break;
             case "Q":
-                currentAccountService.showCurrentAccountList();
+                currentAccountService.show();
                 break;
             case "K":
-                accountService.deleteAccount();
+                accountService.delete();
                 break;
             case "T":
-                transactionService.readTransaction();
+                transactionService.read();
                 break;
             case "P":
                 currentAccountService.depositTransactions();

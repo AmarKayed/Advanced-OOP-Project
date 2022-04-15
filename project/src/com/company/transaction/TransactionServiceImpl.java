@@ -22,7 +22,7 @@ public class TransactionServiceImpl implements TransactionService {
     // Interface Methods:
 
     @Override
-    public Transaction readTransaction(){
+    public Transaction read(){
         boolean chooseAccount = true;  // Variable which determines whether we should choose an account or not for our transaction
         int choice = 1; // Initially, we consider the chosen account as being the first one that was opened
         ArrayList<CurrentAccount> currentAccountList = CurrentAccountServiceImpl.getInstance().getCurrentAccountList();
@@ -42,7 +42,7 @@ public class TransactionServiceImpl implements TransactionService {
             else if(answer.equals("yes")) {
                 chooseAccount = false;
                 System.out.println("We're opening a Current Account");
-                if(CurrentAccountServiceImpl.getInstance().addCurrentAccount() == false){
+                if(CurrentAccountServiceImpl.getInstance().add() == false){
                     System.out.println("No transactions will be added.");
                     return null;
                 }
@@ -52,7 +52,7 @@ public class TransactionServiceImpl implements TransactionService {
 
         if(chooseAccount){
             System.out.println("Select the current account for which the transaction will be made: ");
-            CurrentAccountServiceImpl.getInstance().showCurrentAccountList();
+            CurrentAccountServiceImpl.getInstance().show();
             choice = Service.getInstance().selectChoice(currentAccountList.size());
         }
         else

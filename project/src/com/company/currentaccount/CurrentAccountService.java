@@ -6,14 +6,13 @@ import java.util.List;
 
 public interface CurrentAccountService {
 
-    public CurrentAccount readCurrentAccount();
+    public CurrentAccount read();
 
-    public boolean addCurrentAccount();     // returns true if it was successful, false otherwise
+    public boolean add();     // returns true if it was successful, false otherwise
 
     public List<Transaction> chooseTransactionHistory();
 
     public void sortTransactionHistory();
-
 
     public void depositTransactions();
 

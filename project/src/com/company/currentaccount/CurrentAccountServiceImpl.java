@@ -25,7 +25,7 @@ public class CurrentAccountServiceImpl implements CurrentAccountService {
         return currentAccountList;
     }
 
-    public boolean showCurrentAccountList(){
+    public boolean show(){
         if(getCurrentAccountList().isEmpty()){
             System.out.println("No current account has been opened yet.");
             return false;
@@ -44,11 +44,11 @@ public class CurrentAccountServiceImpl implements CurrentAccountService {
     // Interface Methods:
 
     @Override
-    public CurrentAccount readCurrentAccount(){
+    public CurrentAccount read(){
 
         CurrentAccount ob = new CurrentAccount();
 
-        if(AccountServiceImpl.getInstance().readAccount(ob) == null)
+        if(AccountServiceImpl.getInstance().read(ob) == null)
             return null;
 
         float commission = 0;
@@ -77,8 +77,8 @@ public class CurrentAccountServiceImpl implements CurrentAccountService {
 
 
     @Override
-    public boolean addCurrentAccount(){     // returns true if it was successful, false otherwise
-        CurrentAccount ob = readCurrentAccount();
+    public boolean add(){     // returns true if it was successful, false otherwise
+        CurrentAccount ob = read();
 
         if(ob != null){
             AccountServiceImpl.getInstance().getAccountHashMap().put(ob.getIban(), ob);
@@ -98,7 +98,7 @@ public class CurrentAccountServiceImpl implements CurrentAccountService {
             return null;
         }
         System.out.println("Choose the current account corresponding to the transaction history that ou would like to sort:");
-        showCurrentAccountList();
+        show();
         int choice = Service.getInstance().selectChoice(currentAccountList.size());
 
         CurrentAccount chosenAccount = currentAccountList.get(choice - 1);

@@ -2,9 +2,9 @@ package com.company.employee;
 
 public interface EmployeeService {
 
-    public Employee readEmployee();
+    public Employee read();
 
-    public void addEmployee();
+    public void add();
 
-    public void updateEmployee(Employee toUpdate);
+    public void update(Employee toUpdate);
 }

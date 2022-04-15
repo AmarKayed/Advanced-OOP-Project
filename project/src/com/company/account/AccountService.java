@@ -2,12 +2,12 @@ package com.company.account;
 
 public interface AccountService {
 
-    public boolean showAccounts();
+    public boolean show();
 
-    public Account readAccount(Account ob);
+    public Account read(Account ob);
 
-    public void addAccount();
+    public void add();
 
-    public void deleteAccount();
+    public void delete();
 
 }

@@ -2,7 +2,7 @@ package com.company.address;
 
 public interface AddressService {
 
-    public Address readAddress();
+    public Address read();
 
-    public void updateAdress(Address toUpdate);
+    public void update(Address toUpdate);
 }

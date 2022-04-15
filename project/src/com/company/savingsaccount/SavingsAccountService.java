@@ -2,7 +2,7 @@ package com.company.savingsaccount;
 
 public interface SavingsAccountService {
 
-    public SavingsAccount readSavingsAccount();
+    public SavingsAccount read();
 
-    public void addSavingsAccount();
+    public void add();
 }

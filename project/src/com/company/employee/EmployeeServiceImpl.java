@@ -17,10 +17,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
     @Override
-    public Employee readEmployee(){
+    public Employee read(){
 
         Employee ob = new Employee();
-        PersonServiceImpl.getInstance().readPerson(ob);
+        PersonServiceImpl.getInstance().read(ob);
 
         float salary = 0;
         boolean badInput = true;
@@ -51,9 +51,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void addEmployee() {
+    public void add() {
 
-        Employee ob = EmployeeServiceImpl.getInstance().readEmployee();
+        Employee ob = EmployeeServiceImpl.getInstance().read();
 
         PersonServiceImpl.getInstance().getPersonList().add(ob);
     }
@@ -61,7 +61,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
     @Override
-    public void updateEmployee(Employee toUpdate) {
+    public void update(Employee toUpdate) {
         System.out.println("Salary: " + toUpdate.getSalary());
         System.out.println("Salary Update Value: ");
         String salary;

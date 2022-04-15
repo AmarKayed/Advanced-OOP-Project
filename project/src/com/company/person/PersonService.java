@@ -2,12 +2,12 @@ package com.company.person;
 
 public interface PersonService {
 
-    public Person readPerson(Person ob);
+    public Person read(Person ob);
 
-    public void addPerson();
+    public void add();
 
-    public void updatePerson();
+    public void update();
 
-    public void deletePerson();
+    public void delete();
 
 }

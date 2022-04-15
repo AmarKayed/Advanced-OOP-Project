@@ -41,7 +41,7 @@ public class AccountServiceImpl implements AccountService {
 
 
     @Override
-    public boolean showAccounts(){
+    public boolean show(){
         if(getAccountHashMap().isEmpty()){
             System.out.println("No account has been opened yet.");
             return false;
@@ -53,7 +53,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Account readAccount(Account ob){
+    public Account read(Account ob){
         boolean chooseCustomer = true;  // Variable which determines whether we should choose a holder or not for our account
         int choice = 1; // Initially, we consider the chosen holder as being the first one that was added
         ArrayList<Customer> customerList = CustomerServiceImpl.getInstance().getCustomerList();
@@ -73,7 +73,7 @@ public class AccountServiceImpl implements AccountService {
             else if(answer.equals("yes")){
                 chooseCustomer = false;
                 System.out.println("We're adding a Customer");
-                CustomerServiceImpl.getInstance().addCustomer();
+                CustomerServiceImpl.getInstance().add();
                 System.out.println("The customer has been added successfully! Back to opening the bank account: ");
             }
         }
@@ -86,7 +86,7 @@ public class AccountServiceImpl implements AccountService {
         if(chooseCustomer){
             System.out.println("Holder: (must be a customer)");
             System.out.println("\tAvailable Customers: (choose based on index number)");
-            CustomerServiceImpl.getInstance().showCustomerList();
+            CustomerServiceImpl.getInstance().show();
             choice = Service.getInstance().selectChoice(customerList.size());
         }
 
@@ -118,7 +118,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void addAccount(){
+    public void add(){
         System.out.println("\tWhat type of bank account shall we open:(choose an option using the index number)");
         System.out.println("\t\t1. Current Account");
         System.out.println("\t\t2. Savings Account");
@@ -127,11 +127,11 @@ public class AccountServiceImpl implements AccountService {
         switch (choice){
             case 1:
                 System.out.println("We're opening a Current Account");
-                CurrentAccountServiceImpl.getInstance().addCurrentAccount();
+                CurrentAccountServiceImpl.getInstance().add();
                 break;
             case 2:
                 System.out.println("We're opening a Savings Account");
-                SavingsAccountServiceImpl.getInstance().addSavingsAccount();
+                SavingsAccountServiceImpl.getInstance().add();
                 break;
         }
         System.out.println("Back to addAccount()");
@@ -141,14 +141,14 @@ public class AccountServiceImpl implements AccountService {
 
 
     @Override
-    public void deleteAccount(){
+    public void delete(){
         if(getAccountHashMap().isEmpty()){
             System.out.println("No account has been opened yet and thus no account can be closed.");
             return;
         }
         System.out.println("Choose the account that you would like to close:");
 
-        showAccounts();
+        show();
 
         int choice = Service.getInstance().selectChoice(accountHashMap.size());
 

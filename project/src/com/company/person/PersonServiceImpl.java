@@ -29,7 +29,7 @@ public class PersonServiceImpl implements PersonService {
         return personList;
     }
 
-    public boolean showPersonList(){
+    public boolean show(){
         if(getPersonList().isEmpty()){
             System.out.println("No person has been added.");
             return false;
@@ -41,7 +41,7 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public Person readPerson(Person ob){
+    public Person read(Person ob){
 
         boolean badInput = false;
 
@@ -79,7 +79,7 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public void addPerson(){
+    public void add(){
         System.out.println("\tWhat type of person shall we add:(choose an option using the index number)");
         System.out.println("\t\t1. Customer");
         System.out.println("\t\t2. Employee");
@@ -88,18 +88,18 @@ public class PersonServiceImpl implements PersonService {
         switch (choice){
             case 1:
                 System.out.println("We're adding a Customer");
-                CustomerServiceImpl.getInstance().addCustomer();
+                CustomerServiceImpl.getInstance().add();
                 break;
             case 2:
                 System.out.println("We're adding an Employee");
-                EmployeeServiceImpl.getInstance().addEmployee();
+                EmployeeServiceImpl.getInstance().add();
                 break;
         }
         System.out.println("Back to addPerson()");
 
     }
     @Override
-    public void updatePerson(){
+    public void update(){
         List<Person> personList = getPersonList();
 
         if(personList.isEmpty()) {
@@ -108,7 +108,7 @@ public class PersonServiceImpl implements PersonService {
         }
 
         System.out.println("Choose the person you would like to update: ");
-        showPersonList();
+        show();
 
         int choice = Service.getInstance().selectChoice(personList.size());
         Person toUpdate = personList.get(choice - 1);
@@ -161,15 +161,15 @@ public class PersonServiceImpl implements PersonService {
         // Verify if we need to update Customer or Employee as well:
 
         if (toUpdate instanceof Customer)
-            CustomerServiceImpl.getInstance().updateCustomer((Customer) toUpdate);
+            CustomerServiceImpl.getInstance().update((Customer) toUpdate);
         else if(toUpdate instanceof Employee)
-            EmployeeServiceImpl.getInstance().updateEmployee((Employee) toUpdate);
+            EmployeeServiceImpl.getInstance().update((Employee) toUpdate);
 
     }
 
 
     @Override
-    public void deletePerson(){
+    public void delete(){
         List<Person> personList = getPersonList();
 
         if(personList.isEmpty()) {
@@ -178,13 +178,13 @@ public class PersonServiceImpl implements PersonService {
         }
 
         System.out.println("Choose the person you would like to delete: ");
-        showPersonList();
+        show();
 
         int choice = Service.getInstance().selectChoice(personList.size());
 
         Person toDelete = personList.get(choice - 1);
         if (toDelete instanceof Customer)
-            CustomerServiceImpl.getInstance().deleteCustomer((Customer) toDelete);
+            CustomerServiceImpl.getInstance().delete((Customer) toDelete);
 
         personList.remove(choice - 1);
 

@@ -33,7 +33,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
 
-    public void showCustomerList(){
+    public void show(){
         if(getCustomerList().isEmpty()){
             System.out.println("The bank doesn't have any customers yet.");
             return;
@@ -45,11 +45,11 @@ public class CustomerServiceImpl implements CustomerService {
 
 
     @Override
-    public Customer readCustomer() {
+    public Customer read() {
         Customer ob = new Customer();
-        PersonServiceImpl.getInstance().readPerson(ob);
+        PersonServiceImpl.getInstance().read(ob);
 
-        Address a = AddressServiceImpl.getInstance().readAddress();
+        Address a = AddressServiceImpl.getInstance().read();
         ob.setAddress(a);
 
         String job;
@@ -61,17 +61,17 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void addCustomer(){
+    public void add(){
 
-        Customer ob = CustomerServiceImpl.getInstance().readCustomer();
+        Customer ob = CustomerServiceImpl.getInstance().read();
 
         PersonServiceImpl.getInstance().getPersonList().add(ob);
 
         CustomerServiceImpl.getInstance().getCustomerList().add(ob);
     }
 
-    public void updateCustomer(Customer toUpdate){
-        AddressServiceImpl.getInstance().updateAdress(toUpdate.getAddress());
+    public void update(Customer toUpdate){
+        AddressServiceImpl.getInstance().update(toUpdate.getAddress());
 
         System.out.println("Job: " + toUpdate.getJob());
         System.out.println("Job Update Value: ");
@@ -85,7 +85,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 
 
-    public void deleteCustomer(Customer ob){
+    public void delete(Customer ob){
         int index = customerList.indexOf(ob);
 
         if(index < 0)
@@ -111,7 +111,7 @@ public class CustomerServiceImpl implements CustomerService {
         System.out.println();
         System.out.println("After deleting person " + ob.getFirstName() + " " + ob.getLastName() + ", we also closed all his open bank accounts.");
         System.out.println("Remaining Accounts:\n");
-        AccountServiceImpl.getInstance().showAccounts();
+        AccountServiceImpl.getInstance().show();
 
         customerList.remove(index);
 

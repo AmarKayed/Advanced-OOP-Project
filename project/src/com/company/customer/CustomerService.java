@@ -2,12 +2,12 @@ package com.company.customer;
 
 public interface CustomerService {
 
-    public Customer readCustomer();
+    public Customer read();
 
-    public void addCustomer();
+    public void add();
 
-    public void updateCustomer(Customer toUpdate);
+    public void update(Customer toUpdate);
 
-    public void deleteCustomer(Customer toDelete);
+    public void delete(Customer toDelete);
 
 }

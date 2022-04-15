@@ -15,7 +15,7 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public Address readAddress() {
+    public Address read() {
         String country, city;
 
         System.out.println("Country: ");
@@ -29,7 +29,7 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public void updateAdress(Address toUpdate){
+    public void update(Address toUpdate){
         System.out.println("Country: " + toUpdate.getCountry());
         System.out.println("Country Update Value: ");
         String country;

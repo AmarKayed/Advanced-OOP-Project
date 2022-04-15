@@ -17,11 +17,11 @@ public class SavingsAccountServiceImpl implements SavingsAccountService {
     }
 
     @Override
-    public SavingsAccount readSavingsAccount(){
+    public SavingsAccount read(){
 
         SavingsAccount ob = new SavingsAccount();
 
-        if(AccountServiceImpl.getInstance().readAccount(ob) == null)
+        if(AccountServiceImpl.getInstance().read(ob) == null)
             return null;
 
         float interest = 0;
@@ -70,9 +70,9 @@ public class SavingsAccountServiceImpl implements SavingsAccountService {
     }
 
     @Override
-    public void addSavingsAccount(){
+    public void add(){
 
-        SavingsAccount ob = readSavingsAccount();
+        SavingsAccount ob = read();
 
         if(ob != null)
             AccountServiceImpl.getInstance().getAccountHashMap().put(ob.getIban(), ob);
