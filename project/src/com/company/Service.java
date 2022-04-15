@@ -1,12 +1,11 @@
 package com.company;
 
-import com.company.accountservices.AccountService;
-import com.company.accountservices.CurrentAccountService;
-import com.company.personservices.CustomerService;
-import com.company.personservices.PersonService;
-import com.company.transaction.TransactionService;
+import com.company.accountservices.AccountServiceImpl;
+import com.company.accountservices.CurrentAccountServiceImpl;
+import com.company.personservices.CustomerServiceImpl;
+import com.company.personservices.PersonServiceImpl;
+import com.company.transaction.TransactionServiceImpl;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Service {
@@ -16,21 +15,21 @@ public class Service {
     private String selectedOption;
     private final Scanner sc;
 
-    private final PersonService personService;
-    private final AccountService accountService;
-    private final CustomerService customerService;
-    private final CurrentAccountService currentAccountService;
-    private final TransactionService transactionService;
+    private final PersonServiceImpl personService;
+    private final AccountServiceImpl accountService;
+    private final CustomerServiceImpl customerService;
+    private final CurrentAccountServiceImpl currentAccountService;
+    private final TransactionServiceImpl transactionService;
 
     private Service(){
         // This is a singleton class
         sc = new Scanner(System.in);
 
-        personService = PersonService.getInstance();
-        accountService = AccountService.getInstance();
-        customerService = CustomerService.getInstance();
-        currentAccountService = CurrentAccountService.getInstance();
-        transactionService = TransactionService.getInstance();
+        personService = PersonServiceImpl.getInstance();
+        accountService = AccountServiceImpl.getInstance();
+        customerService = CustomerServiceImpl.getInstance();
+        currentAccountService = CurrentAccountServiceImpl.getInstance();
+        transactionService = TransactionServiceImpl.getInstance();
 
     }
 
