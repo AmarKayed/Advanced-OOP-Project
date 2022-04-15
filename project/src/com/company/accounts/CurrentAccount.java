@@ -1,8 +1,6 @@
 package com.company.accounts;
 
 import com.company.transaction.Transaction;
-import com.company.persons.Customer;
-
 import java.util.*;
 
 public class CurrentAccount extends Account{
@@ -12,29 +10,6 @@ public class CurrentAccount extends Account{
 
 
     public CurrentAccount() {transactionHistory = new ArrayList<>();}
-
-    public CurrentAccount(String openDate, Customer holder, float initialBalance) {
-        super(openDate, holder, initialBalance);
-        transactionHistory = new ArrayList<>();
-    }
-
-    public CurrentAccount(String openDate, Customer holder, float initialBalance, float commission, List<Transaction> transactionHistory) {
-        super(openDate, holder, initialBalance);
-        this.commission = commission;
-        this.transactionHistory = transactionHistory;
-    }
-
-    public CurrentAccount(Account ob, float commission) {
-        super(ob);
-        this.commission = commission;
-        transactionHistory = new ArrayList<>();
-    }
-
-    public CurrentAccount(Account ob, float commission, List<Transaction> transactionHistory) {
-        super(ob);
-        this.commission = commission;
-        this.transactionHistory = transactionHistory;
-    }
 
 
     public float getCommission() {

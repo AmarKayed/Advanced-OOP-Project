@@ -1,7 +1,6 @@
 package com.company.personservices;
 
 import com.company.Service;
-import com.company.accounts.CurrentAccount;
 import com.company.persons.Customer;
 import com.company.persons.Employee;
 import com.company.persons.Person;

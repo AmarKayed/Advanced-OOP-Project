@@ -12,22 +12,6 @@ public class Employee extends Person{
         super();
     }
 
-    public Employee(String firstName, String lastName, char gender) {
-        super(firstName, lastName, gender);
-    }
-
-    public Employee(String firstName, String lastName, char gender, float salary, String hireDate) {
-        super(firstName, lastName, gender);
-        this.salary = salary;
-        this.hireDate = hireDate;
-    }
-
-    public Employee(Person ob, float salary, String hireDate) {
-        super(ob);
-        this.salary = salary;
-        this.hireDate = hireDate;
-    }
-
 
     public float getSalary() {
         return salary;

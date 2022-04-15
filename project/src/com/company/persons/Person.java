@@ -16,20 +16,6 @@ public abstract class Person {
         this.id = ++Person.nrOfPersons;
     }
 
-    public Person(String firstName, String lastName, char gender) {
-        this.id = ++Person.nrOfPersons;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.gender = gender;
-    }
-
-    public Person(Person ob){               // Copy-Constructor
-        this.id = ++Person.nrOfPersons;
-        this.firstName = ob.getFirstName();
-        this.lastName = ob.getLastName();
-        this.gender = ob.getGender();
-    }
-
 
     public static int getNrOfPersons() {
         return nrOfPersons;

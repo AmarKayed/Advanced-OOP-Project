@@ -1,7 +1,5 @@
 package com.company.accounts;
 
-import com.company.persons.Customer;
-
 import java.util.Objects;
 
 public class SavingsAccount extends Account{
@@ -11,22 +9,6 @@ public class SavingsAccount extends Account{
 
 
     public SavingsAccount() {
-    }
-
-    public SavingsAccount(String openDate, Customer holder, float initialBalance) {
-        super(openDate, holder, initialBalance);
-    }
-
-    public SavingsAccount(String openDate, Customer holder, float initialBalance, float interest, int compoundInterval) {
-        super(openDate, holder, initialBalance);
-        this.interest = interest;
-        this.compoundInterval = compoundInterval;
-    }
-
-    public SavingsAccount(Account ob, float interest, int compoundInterval) {
-        super(ob);
-        this.interest = interest;
-        this.compoundInterval = compoundInterval;
     }
 
 

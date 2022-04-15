@@ -2,17 +2,11 @@ package com.company.accountservices;
 
 import com.company.Service;
 import com.company.accounts.Account;
-import com.company.accounts.CurrentAccount;
-import com.company.accounts.SavingsAccount;
 import com.company.persons.Customer;
-import com.company.persons.Person;
 import com.company.personservices.CustomerService;
-import com.company.personservices.EmployeeService;
-import com.company.personservices.PersonService;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class AccountService implements AccountServiceInterface{

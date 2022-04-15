@@ -2,13 +2,11 @@ package com.company.personservices;
 
 import com.company.Service;
 import com.company.accounts.Account;
-import com.company.accounts.CurrentAccount;
 import com.company.accountservices.AccountService;
 import com.company.address.Address;
 import com.company.address.AddressService;
 import com.company.persons.Customer;
-import com.company.persons.Employee;
-import com.company.persons.Person;
+
 
 import java.util.*;
 
@@ -45,21 +43,6 @@ public class CustomerService implements CustomerServiceInterface{
             System.out.println(index++ + ". " + customer);
     }
 
-/*
-    @Override
-    public Customer readCustomer(){
-        Person p = PersonService.getInstance().readPerson();    // We don't need to create a new object, we can reference the returned one
-
-        Address a = AddressService.getInstance().readAddress();
-
-        String job;
-        System.out.println("Job: ");
-        job = Service.getInstance().getSc().nextLine();
-
-        Customer ob = new Customer(p, a, job);
-        return ob;
-    }
-*/
 
     @Override
     public Customer readCustomer() {
@@ -111,7 +94,6 @@ public class CustomerService implements CustomerServiceInterface{
         // We first close all open accounts
 
         int possibleID = 0;
-        int key = 0;
 
         HashMap<Integer, Account> map = AccountService.getInstance().getAccountHashMap();
         Set<Integer> removeKeys = new HashSet<>();          // We cannot remove multiple keys unless we store them in a Set/Collection

@@ -18,21 +18,7 @@ public abstract class Account {
         this.iban = ++Account.nrOfAccounts;
     }
 
-    public Account(String openDate, Customer holder, float initialBalance) {
-        this.iban = ++Account.nrOfAccounts;
-        this.openDate = openDate;
-        this.holder = holder;
-        this.balance = initialBalance;
-    }
-
-    public Account(Account ob){
-        this.iban = ++Account.nrOfAccounts;
-        this.openDate = ob.getOpenDate();
-        this.holder = ob.getHolder();
-        this.balance = ob.getBalance();
-    }
-
-
+    
     public static int getNrOfAccounts() {
         return nrOfAccounts;
     }
