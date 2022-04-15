@@ -13,11 +13,24 @@ public class Service {
     private static Service instance;
 
     private String selectedOption;
-    private Scanner sc;
+    private final Scanner sc;
+
+    private final PersonService personService;
+    private final AccountService accountService;
+    private final CustomerService customerService;
+    private final CurrentAccountService currentAccountService;
+    private final TransactionService transactionService;
 
     private Service(){
         // This is a singleton class
         sc = new Scanner(System.in);
+
+        personService = PersonService.getInstance();
+        accountService = AccountService.getInstance();
+        customerService = CustomerService.getInstance();
+        currentAccountService = CurrentAccountService.getInstance();
+        transactionService = TransactionService.getInstance();
+
     }
 
     public static Service getInstance(){
@@ -111,46 +124,46 @@ public class Service {
 
         switch (selectedOption){
             case "A":
-                PersonService.getInstance().addPerson();
+                personService.addPerson();
                 break;
             case "L":
-                PersonService.getInstance().showPersonList();
+                personService.showPersonList();
                 break;
             case "U":
-                PersonService.getInstance().updatePerson();
+                personService.updatePerson();
                 break;
             case "D":
-                PersonService.getInstance().deletePerson();
+                personService.deletePerson();
                 break;
             case "O":
-                AccountService.getInstance().addAccount();
+                accountService.addAccount();
                 break;
             case "C":
-                CustomerService.getInstance().showCustomerList();
+                customerService.showCustomerList();
                 break;
             case "B":
-                AccountService.getInstance().showAccounts();
+                accountService.showAccounts();
                 break;
             case "Q":
-                CurrentAccountService.getInstance().showCurrentAccountList();
+                currentAccountService.showCurrentAccountList();
                 break;
             case "K":
-                AccountService.getInstance().deleteAccount();
+                accountService.deleteAccount();
                 break;
             case "T":
-                TransactionService.getInstance().readTransaction();
+                transactionService.readTransaction();
                 break;
             case "P":
-                CurrentAccountService.getInstance().depositTransactions();
+                currentAccountService.depositTransactions();
                 break;
             case "W":
-                CurrentAccountService.getInstance().withdrawTransactions();
+                currentAccountService.withdrawTransactions();
                 break;
             case "S":
-                CurrentAccountService.getInstance().sortTransactionHistory();
+                currentAccountService.sortTransactionHistory();
                 break;
             case "H":
-                Service.getInstance().optionsMenu(false);
+                optionsMenu(false);
                 break;
             case "X":
                 return;
