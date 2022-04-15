@@ -1,11 +1,11 @@
-package com.company.personservices;
+package com.company.customer;
 
 import com.company.Service;
-import com.company.accounts.Account;
-import com.company.accountservices.AccountServiceImpl;
+import com.company.account.Account;
+import com.company.account.AccountServiceImpl;
 import com.company.address.Address;
 import com.company.address.AddressServiceImpl;
-import com.company.persons.Customer;
+import com.company.person.PersonServiceImpl;
 
 
 import java.util.*;

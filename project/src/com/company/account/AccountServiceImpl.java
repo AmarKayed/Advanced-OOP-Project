@@ -1,10 +1,11 @@
-package com.company.accountservices;
+package com.company.account;
 
 import com.company.Service;
-import com.company.accounts.Account;
-import com.company.accounts.CurrentAccount;
-import com.company.persons.Customer;
-import com.company.personservices.CustomerServiceImpl;
+import com.company.currentaccount.CurrentAccount;
+import com.company.currentaccount.CurrentAccountServiceImpl;
+import com.company.savingsaccount.SavingsAccountServiceImpl;
+import com.company.customer.Customer;
+import com.company.customer.CustomerServiceImpl;
 
 import java.util.ArrayList;
 import java.util.HashMap;

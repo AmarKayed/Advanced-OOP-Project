@@ -1,8 +1,10 @@
-package com.company.accounts;
+package com.company.savingsaccount;
+
+import com.company.account.Account;
 
 import java.util.Objects;
 
-public class SavingsAccount extends Account{
+public class SavingsAccount extends Account {
 
     private float interest;
     private int compoundInterval;

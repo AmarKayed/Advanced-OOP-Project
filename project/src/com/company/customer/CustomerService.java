@@ -1,6 +1,4 @@
-package com.company.personservices;
-
-import com.company.persons.Customer;
+package com.company.customer;
 
 public interface CustomerService {
 

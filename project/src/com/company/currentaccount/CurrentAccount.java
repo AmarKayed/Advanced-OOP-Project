@@ -1,9 +1,10 @@
-package com.company.accounts;
+package com.company.currentaccount;
 
+import com.company.account.Account;
 import com.company.transaction.Transaction;
 import java.util.*;
 
-public class CurrentAccount extends Account{
+public class CurrentAccount extends Account {
 
     private float commission;
     private List<Transaction> transactionHistory;

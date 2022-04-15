@@ -1,7 +1,7 @@
-package com.company.personservices;
+package com.company.employee;
 
 import com.company.Service;
-import com.company.persons.Employee;
+import com.company.person.PersonServiceImpl;
 
 public class EmployeeServiceImpl implements EmployeeService {
 

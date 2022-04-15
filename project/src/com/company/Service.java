@@ -1,9 +1,9 @@
 package com.company;
 
-import com.company.accountservices.AccountServiceImpl;
-import com.company.accountservices.CurrentAccountServiceImpl;
-import com.company.personservices.CustomerServiceImpl;
-import com.company.personservices.PersonServiceImpl;
+import com.company.account.AccountServiceImpl;
+import com.company.currentaccount.CurrentAccountServiceImpl;
+import com.company.customer.CustomerServiceImpl;
+import com.company.person.PersonServiceImpl;
 import com.company.transaction.TransactionServiceImpl;
 
 import java.util.Scanner;

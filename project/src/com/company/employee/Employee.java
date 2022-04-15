@@ -1,8 +1,10 @@
-package com.company.persons;
+package com.company.employee;
+
+import com.company.person.Person;
 
 import java.util.Objects;
 
-public class Employee extends Person{
+public class Employee extends Person {
 
     private float salary;
     private String hireDate;

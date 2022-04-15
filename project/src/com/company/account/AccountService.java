@@ -1,6 +1,6 @@
-package com.company.accountservices;
+package com.company.account;
 
-import com.company.accounts.Account;
+import com.company.account.Account;
 
 public interface AccountService {
 

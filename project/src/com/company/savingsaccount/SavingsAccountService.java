@@ -1,6 +1,4 @@
-package com.company.accountservices;
-
-import com.company.accounts.SavingsAccount;
+package com.company.savingsaccount;
 
 public interface SavingsAccountService {
 

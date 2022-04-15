@@ -1,6 +1,6 @@
-package com.company.accounts;
+package com.company.account;
 
-import com.company.persons.Customer;
+import com.company.customer.Customer;
 
 import java.util.Objects;
 

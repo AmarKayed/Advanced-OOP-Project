@@ -1,9 +1,10 @@
-package com.company.personservices;
+package com.company.person;
 
 import com.company.Service;
-import com.company.persons.Customer;
-import com.company.persons.Employee;
-import com.company.persons.Person;
+import com.company.customer.Customer;
+import com.company.employee.Employee;
+import com.company.customer.CustomerServiceImpl;
+import com.company.employee.EmployeeServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;

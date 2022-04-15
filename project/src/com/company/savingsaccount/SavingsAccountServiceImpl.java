@@ -1,7 +1,7 @@
-package com.company.accountservices;
+package com.company.savingsaccount;
 
 import com.company.Service;
-import com.company.accounts.SavingsAccount;
+import com.company.account.AccountServiceImpl;
 
 public class SavingsAccountServiceImpl implements SavingsAccountService {
 

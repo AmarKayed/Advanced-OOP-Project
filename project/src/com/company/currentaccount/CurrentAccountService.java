@@ -1,6 +1,5 @@
-package com.company.accountservices;
+package com.company.currentaccount;
 
-import com.company.accounts.CurrentAccount;
 import com.company.transaction.Transaction;
 
 import java.util.List;

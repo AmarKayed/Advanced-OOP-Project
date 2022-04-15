@@ -1,11 +1,5 @@
 package com.company.draftignore;
 
-import com.company.accounts.Account;
-import com.company.accounts.CurrentAccount;
-import com.company.address.Address;
-import com.company.persons.Customer;
-import com.company.persons.Employee;
-import com.company.persons.Person;
 import com.company.transaction.Transaction;
 
 import java.util.ArrayList;

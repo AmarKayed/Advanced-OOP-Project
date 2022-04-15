@@ -1,7 +1,7 @@
-package com.company.accountservices;
+package com.company.currentaccount;
 
 import com.company.Service;
-import com.company.accounts.CurrentAccount;
+import com.company.account.AccountServiceImpl;
 import com.company.transaction.Transaction;
 
 import java.util.ArrayList;

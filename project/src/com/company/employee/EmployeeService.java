@@ -1,6 +1,6 @@
-package com.company.personservices;
+package com.company.employee;
 
-import com.company.persons.Employee;
+import com.company.employee.Employee;
 
 public interface EmployeeService {
 

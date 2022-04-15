@@ -1,6 +1,7 @@
-package com.company.persons;
+package com.company.customer;
 
 import com.company.address.Address;
+import com.company.person.Person;
 
 import java.util.Objects;
 
