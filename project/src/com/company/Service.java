@@ -6,6 +6,7 @@ import com.company.personservices.CustomerService;
 import com.company.personservices.PersonService;
 import com.company.transaction.TransactionService;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Service {
@@ -60,27 +61,34 @@ public class Service {
     // Methods:
 
     public int selectChoice(int limit){
-        float choice = sc.nextFloat();
-        sc.nextLine(); // clear the buffer
+        String input;
         boolean badInput = true;
+
         while(badInput) {
-            if(choice > limit)
-                System.out.println("\tThe supplied index MUST be smaller than " + limit);
-            else if(choice < 1)
-                System.out.println("\t The supplied index MUST be greater than 0");
-            else if(choice - (int) choice != 0)
-                System.out.println("\tThe supplied index MUST be an integer from the interval [1, " + limit + "]");
-            else
-                badInput = false;
-            if(badInput) {
-                System.out.println("\tPlease try again: ");
-                choice = sc.nextFloat();
-                sc.nextLine(); // clear the buffer
+            input = sc.nextLine();
+
+            try{
+                float choice = Float.parseFloat(input);
+                if(choice > limit)
+                    System.out.println("\tThe supplied index MUST be smaller than " + limit);
+                else if(choice < 1)
+                    System.out.println("\t The supplied index MUST be greater than 0");
+                else if(choice - (int) choice != 0)
+                    System.out.println("\tThe supplied index MUST be an integer from the interval [1, " + limit + "]");
+                else
+                    badInput = false;
+                if(badInput)
+                    System.out.println("\tPlease try again: ");
 
 
+                else
+                    return (int) choice;
+            }
+            catch (NumberFormatException e){
+                System.out.println("The input MUST be an integer. Please try again: ");
             }
         }
-        return (int) choice;
+        return 0;
     }
 
     public String yesOrNo(){

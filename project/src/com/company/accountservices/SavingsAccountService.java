@@ -21,49 +21,47 @@ public class SavingsAccountService implements SavingsAccountServiceInterface{
     public SavingsAccount readSavingsAccount(){
 
         SavingsAccount ob = new SavingsAccount();
-        AccountService.getInstance().readAccount(ob);
 
-        float interest;
-        float compoundInterval;
-        boolean badInput = false;
+        if(AccountService.getInstance().readAccount(ob) == null)
+            return null;
+
+        float interest = 0;
+        float compoundInterval = 0;
+        boolean badInput = true;
+        String input;
 
         System.out.println("Interest Rate: ");
 
-        interest = Service.getInstance().getSc().nextFloat();
-        Service.getInstance().getSc().nextLine(); // clear the buffer
-
-
-        if(interest < 0 || interest > 100)
-            badInput = true;
         while(badInput){
+            input = Service.getInstance().getSc().nextLine();
+            try{
+                interest = Float.parseFloat(input);
+                if(interest < 0 || interest > 100)
+                    System.out.println("The interest rate is a percentage, hence it must be between 0 and 100%. Please type another interest rate.");
+                else badInput = false;
 
-            System.out.println("The interest rate is a percentage, hense it must be between 0 and 100%. Please type another interest rate.");
-            System.out.println("interest: ");
-
-            interest = Service.getInstance().getSc().nextFloat();
-            Service.getInstance().getSc().nextLine(); // clear the buffer
-
-            if(interest >= 0 && interest <= 100)
-                badInput = false;
+            }
+            catch (NumberFormatException e) {
+                System.out.println("The interest rate MUST be a real number. Please try again:");
+            }
         }
+
         ob.setInterest(interest);
 
 
         System.out.println("Compound Interval: (in number of months)");
-        compoundInterval = Service.getInstance().getSc().nextInt();
-        Service.getInstance().getSc().nextLine(); // clear the buffer
-
-
-        if(compoundInterval < 1 || compoundInterval - (int) compoundInterval != 0)
-            badInput = true;
-
-        while (badInput){
-            System.out.println("The compound interval represents a number of months, which cannot be negative or decimal. Please type another compound interval.");
-            System.out.println("Compound Interval: (in number of months)");
-            compoundInterval = Service.getInstance().getSc().nextInt();
-            Service.getInstance().getSc().nextLine(); // clear the buffer
-            if(!(compoundInterval < 1 || compoundInterval - (int) compoundInterval != 0))
-                badInput = false;
+        badInput = true;
+        while(badInput){
+            input = Service.getInstance().getSc().nextLine();
+            try{
+                compoundInterval = Float.parseFloat(input);
+                if(compoundInterval < 1 || compoundInterval - (int) compoundInterval != 0)
+                    System.out.println("The compound interval represents a number of months, which cannot be negative or decimal. Please type another compound interval.");
+                else badInput = false;
+            }
+            catch (NumberFormatException e) {
+                System.out.println("The interest rate MUST an integer. Please try again:");
+            }
         }
 
         ob.setCompoundInterval((int) compoundInterval);
@@ -77,6 +75,7 @@ public class SavingsAccountService implements SavingsAccountServiceInterface{
 
         SavingsAccount ob = readSavingsAccount();
 
-        AccountService.getInstance().getAccountHashMap().put(ob.getIban(), ob);
+        if(ob != null)
+            AccountService.getInstance().getAccountHashMap().put(ob.getIban(), ob);
     }
 }

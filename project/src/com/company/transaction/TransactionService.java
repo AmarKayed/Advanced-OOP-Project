@@ -62,8 +62,19 @@ public class TransactionService implements TransactionServiceInterface{
         String transactionDate = Service.getInstance().getSc().nextLine();
 
         System.out.println("Transaction Amount: ");
-        float amount = Service.getInstance().getSc().nextFloat();
-        Service.getInstance().getSc().nextLine();       // clear the buffer
+        float amount = 0;
+        String input;
+        boolean badInput = true;
+        while(badInput){
+            input = Service.getInstance().getSc().nextLine();
+            try{
+                amount = Float.parseFloat(input);
+                badInput = false;   // if no exceptions were thrown, then the input is good
+            }
+            catch (NumberFormatException e){
+                System.out.println("The transaction amount MUST be a real number. Please try again:");
+            }
+        }
 
         Transaction ob = new Transaction(currentAccountList.get(choice - 1).getIban(), transactionDate, amount);
 

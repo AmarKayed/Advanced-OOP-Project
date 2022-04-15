@@ -7,6 +7,7 @@ import com.company.transaction.Transaction;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class CurrentAccountService implements CurrentAccountServiceInterface{
@@ -37,38 +38,38 @@ public class CurrentAccountService implements CurrentAccountServiceInterface{
         return true;
     }
 
+    public void closeAccount(CurrentAccount ob){
+        ArrayList<CurrentAccount> currentAccountArrayList = getCurrentAccountList();
+        currentAccountArrayList.remove(ob);
+    }
+
     // Interface Methods:
 
     @Override
     public CurrentAccount readCurrentAccount(){
 
         CurrentAccount ob = new CurrentAccount();
-        AccountService.getInstance().readAccount(ob);
 
-        if(ob == null)
+        if(AccountService.getInstance().readAccount(ob) == null)
             return null;
 
-        float commission;
-        boolean badInput = false;
+        float commission = 0;
+        boolean badInput = true;
+        String input;
         System.out.println("Commission Rate: ");
 
-        commission = Service.getInstance().getSc().nextFloat();
-        Service.getInstance().getSc().nextLine(); // clear the buffer
-
-
-        if(commission < 0 || commission > 100)
-            badInput = true;
-
         while(badInput){
-
-            System.out.println("The commission rate is a percentage, hence it must be between 0 and 100%. Please type another commission rate.");
-            System.out.println("Commission Rate: ");
-
-            commission = Service.getInstance().getSc().nextFloat();
-            Service.getInstance().getSc().nextLine(); // clear the buffer
-
-            if(commission >= 0 && commission <= 100)
-                badInput = false;
+            input = Service.getInstance().getSc().nextLine();
+            try{
+                commission = Float.parseFloat(input);
+                if(commission < 0 || commission > 100)
+                    System.out.println("The commission rate is a percentage, hence it must be between 0 and 100%. Please type another commission rate.");
+                else
+                    badInput = false;
+            }
+            catch (NumberFormatException e){
+                System.out.println("The commission MUST be a real number. Please try again:");
+            }
         }
 
         ob.setCommission(commission);

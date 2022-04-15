@@ -25,36 +25,31 @@ public class EmployeeService implements EmployeeServiceInterface{
         Employee ob = new Employee();
         PersonService.getInstance().readPerson(ob);
 
-        float salary;
-        String hireDate;
-        boolean badInput = false;
+        float salary = 0;
+        boolean badInput = true;
+        String input;
 
         System.out.println("Salary: ");
-        salary = Service.getInstance().getSc().nextFloat();
-        Service.getInstance().getSc().nextLine(); // clear the buffer
-
-
-        if(salary < 0)
-            badInput = true;
-        while(badInput){
-
-            System.out.println("The salary cannot be negative. Please type another salary.");
-            System.out.println("Salary: ");
-
-            salary = Service.getInstance().getSc().nextFloat();
-            Service.getInstance().getSc().nextLine(); // clear the buffer
-
-            if(salary >= 0)
-                badInput = false;
+        while (badInput){
+            input = Service.getInstance().getSc().nextLine();
+            try {
+                salary = Float.parseFloat(input);
+                if(salary < 0)
+                    System.out.println("The salary cannot be negative. Please type another salary.");
+                else badInput = false;
+            }
+            catch (NumberFormatException e){
+                System.out.println("The salary MUST be a positive real number. Please try again:");
+            }
         }
+
         ob.setSalary(salary);
 
         System.out.println("hireDate: ");
+        String hireDate;
         hireDate = Service.getInstance().getSc().nextLine();
         ob.setHireDate(hireDate);
 
-//        Employee ob = new Employee(p, salary, hireDate);
-//        PersonService.getInstance().removeTemporaryObject();    // So that the ID's remain in normal logical order
         return ob;
     }
 

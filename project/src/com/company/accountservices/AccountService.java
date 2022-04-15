@@ -2,6 +2,7 @@ package com.company.accountservices;
 
 import com.company.Service;
 import com.company.accounts.Account;
+import com.company.accounts.CurrentAccount;
 import com.company.persons.Customer;
 import com.company.personservices.CustomerService;
 
@@ -29,6 +30,8 @@ public class AccountService implements AccountServiceInterface{
 
     public void closeAccount(int key){
         HashMap<Integer, Account> accountHashMap = getAccountHashMap();
+        if(accountHashMap.get(key) instanceof CurrentAccount)
+            CurrentAccountService.getInstance().closeAccount((CurrentAccount) accountHashMap.get(key));
         accountHashMap.remove(key);
     }
 
@@ -88,25 +91,25 @@ public class AccountService implements AccountServiceInterface{
 
         ob.setHolder(customerList.get(choice - 1));
 
-        float balance;
-        boolean badInput = false;
-
+        float balance = 0;
+        boolean badInput = true;
+        String input;
         System.out.println("Initial Balance: ");
-        balance = Service.getInstance().getSc().nextFloat();
-        Service.getInstance().getSc().nextLine(); // clear the buffer
 
-        if(balance < 0)
-            badInput = true;
-        while (badInput){
-            System.out.println("The balance cannot be negative. Please try again: ");
-            System.out.println("Initial Balance: ");
-
-            balance = Service.getInstance().getSc().nextFloat();
-            Service.getInstance().getSc().nextLine(); // clear the buffer
-
-            if(balance >= 0)
-                badInput = false;
+        while(badInput){
+            input = Service.getInstance().getSc().nextLine();
+            try{
+                balance = Float.parseFloat(input);
+                if (balance < 0)
+                    System.out.println("The balance cannot be negative. Please try again: ");
+                else
+                    badInput = false;
+            }
+            catch (NumberFormatException e){
+                System.out.println("The balance MUST be a real number. Please try again:");
+            }
         }
+
         ob.setBalance(balance);
 
         return ob;
@@ -158,6 +161,7 @@ public class AccountService implements AccountServiceInterface{
 
         System.out.println();
         closeAccount(key);
+        System.out.println("The bank account has been successfully closed!");
     }
 
 }
