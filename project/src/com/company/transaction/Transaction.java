@@ -2,7 +2,7 @@ package com.company.transaction;
 
 import java.util.*;
 
-public class Transaction implements Comparable{
+public class Transaction implements Comparable<Transaction>{
 
     private final int iban;
     private String transactionDate;
@@ -60,9 +60,9 @@ public class Transaction implements Comparable{
     }
 
     @Override
-    public int compareTo(Object o) {
+    public int compareTo(Transaction ob) {
         String[] t1 = this.transactionDate.split("\\s+");
-        String[] t2 = ((Transaction) o).getTransactionDate().split("\\s+");
+        String[] t2 = ob.getTransactionDate().split("\\s+");
         int year1, year2;
         String month1, month2;
         int day1, day2;
@@ -74,7 +74,7 @@ public class Transaction implements Comparable{
             else if (year1 == year2){
                 month1 = t1[1];
                 month2 = t2[1];
-                if(monthList.indexOf(month1) != -1 && monthList.indexOf(month2) != -1) {
+                if(!monthList.contains(month1) && !monthList.contains(month2)) {
                     if (monthList.indexOf(month1) < monthList.indexOf(month2))
                         return -1;
                     else if(monthList.indexOf(month1) == monthList.indexOf(month2)){

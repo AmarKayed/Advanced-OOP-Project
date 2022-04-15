@@ -18,7 +18,7 @@ public abstract class Account {
         this.iban = ++Account.nrOfAccounts;
     }
 
-    
+
     public static int getNrOfAccounts() {
         return nrOfAccounts;
     }
