@@ -102,12 +102,9 @@ public class CustomerServiceImpl implements CustomerService {
         for(Map.Entry me : map.entrySet()){
 
                 possibleID = ((Account) me.getValue()).getHolder().getId();
-                if (ob.getId() == possibleID) {
-
-//                    map.remove(me.getKey());              // We CANNOT REMOVE KEYS INDIVIDUALLY IN A FOR LOOP
+                if (ob.getId() == possibleID)
                     removeKeys.add((Integer) me.getKey());
 
-                }
             }
 
         map.keySet().removeAll(removeKeys);
@@ -115,8 +112,6 @@ public class CustomerServiceImpl implements CustomerService {
         System.out.println("After deleting person " + ob.getFirstName() + " " + ob.getLastName() + ", we also closed all his open bank accounts.");
         System.out.println("Remaining Accounts:\n");
         AccountServiceImpl.getInstance().showAccounts();
-
-//        AccountService.getInstance().closeAccount(index);
 
         customerList.remove(index);
 

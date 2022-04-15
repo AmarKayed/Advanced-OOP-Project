@@ -39,16 +39,6 @@ public class Address {
                 "country='" + country + '\'' +
                 ", city='" + city + '\'' +
                 '}';
-//        return "country='" + country + '\'' +
-//                ", city='" + city + '\'';
-
-
-//
-//        return "Address{" +
-//                "country='" + country + '\'' +
-//                ", city='" + city + '\'' +
-//                '}';
-//
     }
 
     @Override

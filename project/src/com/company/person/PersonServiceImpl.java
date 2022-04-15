@@ -42,7 +42,7 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public Person readPerson(Person ob){
-//        Person ob = new Person();
+
         boolean badInput = false;
 
         System.out.println("First Name: ");
@@ -96,7 +96,7 @@ public class PersonServiceImpl implements PersonService {
                 break;
         }
         System.out.println("Back to addPerson()");
-//        Service.getInstance().getSc().nextLine(); // clearing the buffer
+
     }
     @Override
     public void updatePerson(){

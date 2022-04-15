@@ -1,7 +1,5 @@
 package com.company.person;
 
-import com.company.person.Person;
-
 public interface PersonService {
 
     public Person readPerson(Person ob);

@@ -18,8 +18,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee readEmployee(){
-//        Person p = PersonService.getInstance().readPerson();    // We don't need to create a new object, we can reference the returned one
-//        System.out.println("HERE " + p.getId());
 
         Employee ob = new Employee();
         PersonServiceImpl.getInstance().readPerson(ob);
@@ -54,7 +52,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void addEmployee() {
-//        Employee ob = new Employee("Michael", "Jack", 'M', 2000, "22 MAR 2022");
 
         Employee ob = EmployeeServiceImpl.getInstance().readEmployee();
 

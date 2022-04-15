@@ -1,7 +1,5 @@
 package com.company.account;
 
-import com.company.account.Account;
-
 public interface AccountService {
 
     public boolean showAccounts();
