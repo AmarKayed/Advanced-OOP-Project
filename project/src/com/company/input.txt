@@ -1,0 +1,159 @@
+T
+yes
+yes
+Robert
+Downey
+M
+USA
+Florida
+Actor
+24 MAR 2019
+3940
+8
+04 APR 2019
+53.57
+
+A
+2
+Michael
+Jordan
+M
+2000
+22 MAR 2022
+
+A
+2
+Jimmy
+Patrick
+M
+1500
+13 APR 2019
+
+A
+1
+Johnny
+Xina
+M
+USA
+New York City
+Wrestler
+
+A
+1
+Liam
+Neeson
+M
+USA
+Seattle
+Actor
+
+O
+2
+13 SEP 2018
+1
+213.5
+3
+12
+
+O
+2
+23 FEB 2019
+2
+15.54
+5
+6
+
+O
+1
+31 AUG 2020
+1
+1000
+10
+
+T
+1
+04 SEP 2020
+130
+
+T
+1
+02 SEP 2020
+387.8
+
+U
+3
+John
+Cena
+_keep
+
+U
+1
+_keep
+_keep
+_keep
+2100.3 Something Here Something
+_keep
+
+A
+1
+Scarlett
+Johansson
+F
+Canada
+San Francisco
+Actress
+
+U
+5
+_keep
+_keep
+_keep
+USA
+Los Angeles
+_keep
+
+O
+1
+15 MAY 1988
+2
+5005
+2
+
+T
+1
+05 SEP 2020
+-135.55
+
+T
+1
+03 SEP 2020
+1088.11
+
+T
+2
+15 JUN 1999
+1330
+
+T
+2
+23 APR 2005
+600
+
+T
+2
+01 AUG 2001
+-3000
+
+S
+1
+
+S
+2
+
+P
+1
+
+W
+2
+
+L

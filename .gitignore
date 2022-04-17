@@ -4,3 +4,6 @@ out/
 *.iml
 *.ipr
 *.iws
+
+/draftFiles
+/project/src/com/company/draftignore
