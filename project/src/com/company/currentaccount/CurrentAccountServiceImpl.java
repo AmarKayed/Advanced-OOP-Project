@@ -1,6 +1,5 @@
 package com.company.currentaccount;
 
-import com.company.customer.Customer;
 import com.company.service.CsvServiceImpl;
 import com.company.service.Service;
 import com.company.account.AccountServiceImpl;

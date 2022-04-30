@@ -1,5 +1,6 @@
 package com.company.transaction;
 
+import com.company.service.CsvServiceImpl;
 import com.company.service.Service;
 import com.company.currentaccount.CurrentAccount;
 import com.company.currentaccount.CurrentAccountServiceImpl;
@@ -82,6 +83,9 @@ public class TransactionServiceImpl implements TransactionService {
         // Now that we've created the transaction, we must include it in the transactionHistory of the selected currentAccount
 
         currentAccountList.get(choice - 1).getTransactionHistory().add(ob);
+
+        CsvServiceImpl<Transaction> csv = new CsvServiceImpl<>();
+        csv.write(ob);
 
         System.out.println(currentAccountList.get(choice - 1));
 

@@ -72,6 +72,12 @@ public class Service {
 
     // Methods:
 
+
+    public void loadCsvData(){
+        System.out.println("I'm not sure how to implement this.");
+    }
+
+
     public int selectChoice(int limit){
         String input;
         boolean badInput = true;

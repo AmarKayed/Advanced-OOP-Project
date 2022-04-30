@@ -18,6 +18,7 @@ public class AuditServiceImpl implements AuditService{
         return instance;
     }
 
+    @Override
     public void createLog(String filePath, String option){
         try (FileWriter pw = new FileWriter(filePath, true)){
             pw.append("\n" + Calendar.getInstance().getTime() +";" + option);
@@ -26,6 +27,7 @@ public class AuditServiceImpl implements AuditService{
         }
     }
 
+    @Override
     public void log(String option) {
         String filePath = "src\\com\\company\\resources\\audit.csv";
         try{
@@ -42,10 +44,5 @@ public class AuditServiceImpl implements AuditService{
         } catch(Exception e){
             throw new RuntimeException(e);
         }
-
-
     }
-
-
-
 }
