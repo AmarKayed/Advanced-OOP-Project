@@ -5,6 +5,7 @@ import com.company.currentaccount.CurrentAccount;
 import com.company.currentaccount.CurrentAccountServiceImpl;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TransactionServiceImpl implements TransactionService {
 
@@ -25,7 +26,7 @@ public class TransactionServiceImpl implements TransactionService {
     public Transaction read(){
         boolean chooseAccount = true;  // Variable which determines whether we should choose an account or not for our transaction
         int choice = 1; // Initially, we consider the chosen account as being the first one that was opened
-        ArrayList<CurrentAccount> currentAccountList = CurrentAccountServiceImpl.getInstance().getCurrentAccountList();
+        List<CurrentAccount> currentAccountList = CurrentAccountServiceImpl.getInstance().getCurrentAccountList();
 
         if(CurrentAccountServiceImpl.getInstance().getCurrentAccountList().size() == 0) {
 

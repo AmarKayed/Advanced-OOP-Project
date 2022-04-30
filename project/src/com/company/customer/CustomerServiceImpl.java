@@ -16,7 +16,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     private static CustomerServiceImpl instance;
 
-    private ArrayList<Customer> customerList;
+    private List<Customer> customerList;
 
     private CustomerServiceImpl() {customerList = new ArrayList<Customer>();}
 
@@ -26,7 +26,7 @@ public class CustomerServiceImpl implements CustomerService {
         return instance;
     }
 
-    public ArrayList<Customer> getCustomerList() {
+    public List<Customer> getCustomerList() {
         return customerList;
     }
 
@@ -100,7 +100,7 @@ public class CustomerServiceImpl implements CustomerService {
 
         int possibleID = 0;
 
-        HashMap<Integer, Account> map = AccountServiceImpl.getInstance().getAccountHashMap();
+        Map<Integer, Account> map = AccountServiceImpl.getInstance().getAccountHashMap();
         Set<Integer> removeKeys = new HashSet<>();          // We cannot remove multiple keys unless we store them in a Set/Collection
 
 
