@@ -14,6 +14,7 @@ public class Service {
     private static Service instance;
 
     private String selectedOption;
+    private boolean validOption;
     private final Scanner sc;
 
     private final PersonServiceImpl personService;
@@ -26,6 +27,7 @@ public class Service {
     private Service(){
         // This is a singleton class
         sc = new Scanner(System.in);
+        validOption = true;
 
         personService = PersonServiceImpl.getInstance();
         accountService = AccountServiceImpl.getInstance();
@@ -51,6 +53,14 @@ public class Service {
 
     public void setSelectedOption(String selectedOption) {
         this.selectedOption = selectedOption;
+    }
+
+    public boolean getValidOption() {
+        return validOption;
+    }
+
+    public void setValidOption(boolean validOption) {
+        this.validOption = validOption;
     }
 
     // We won't be needing a setter for Scanner sc
@@ -179,9 +189,12 @@ public class Service {
                 return;
             default:
                 System.out.println("Invalid Command.");
+                setValidOption(false);
                 break;
         }
-        auditService.log(selectedOption);
+        if(validOption)
+            auditService.log(selectedOption);
+        setValidOption(true);
         run();
     }
 }

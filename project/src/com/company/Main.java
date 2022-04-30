@@ -13,15 +13,17 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Service.getInstance().optionsMenu(true);    // We first print the "Welcome" menu
-        Service.getInstance().run();
+//        Service.getInstance().optionsMenu(true);    // We first print the "Welcome" menu
+//        Service.getInstance().run();
         System.out.println("Back to Main.");
 
-//        CsvServiceImpl<CurrentAccount> csv = new CsvServiceImpl<>();
+        CsvServiceImpl<CurrentAccount> csv = new CsvServiceImpl<>();
 //        CurrentAccount ob = CurrentAccountServiceImpl.getInstance().read();
 //        System.out.println(ob);
 //        csv.convertToCsvFormat(ob);
 //        csv.write(ob);
+//        csv.contains(new CurrentAccount(),"ceva");
+        csv.read(new CurrentAccount());
     }
 
 
@@ -40,4 +42,15 @@ Actor
 1000
 10
 
+
+
+
+A
+1
+Robert
+Downey
+M
+USA
+Florida
+Actor
          */

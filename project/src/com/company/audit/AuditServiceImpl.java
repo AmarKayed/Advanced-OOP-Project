@@ -27,7 +27,6 @@ public class AuditServiceImpl implements AuditService{
     }
 
     public void log(String option) {
-        System.out.println(Calendar.getInstance().getTime());
         String filePath = "src\\com\\company\\resources\\audit.csv";
         try{
             File file = new File(filePath);
