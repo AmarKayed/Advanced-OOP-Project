@@ -1,6 +1,6 @@
 package com.company.transaction;
 
-import com.company.Service;
+import com.company.service.Service;
 import com.company.currentaccount.CurrentAccount;
 import com.company.currentaccount.CurrentAccountServiceImpl;
 

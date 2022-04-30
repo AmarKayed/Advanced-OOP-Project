@@ -1,6 +1,6 @@
 package com.company.address;
 
-import com.company.Service;
+import com.company.service.Service;
 
 public class AddressServiceImpl implements AddressService {
 

@@ -1,6 +1,6 @@
 package com.company.person;
 
-import com.company.Service;
+import com.company.service.Service;
 import com.company.customer.Customer;
 import com.company.employee.Employee;
 import com.company.customer.CustomerServiceImpl;

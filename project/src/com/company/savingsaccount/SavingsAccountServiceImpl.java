@@ -1,6 +1,8 @@
 package com.company.savingsaccount;
 
-import com.company.Service;
+import com.company.currentaccount.CurrentAccount;
+import com.company.service.CsvServiceImpl;
+import com.company.service.Service;
 import com.company.account.AccountServiceImpl;
 
 public class SavingsAccountServiceImpl implements SavingsAccountService {
@@ -74,7 +76,10 @@ public class SavingsAccountServiceImpl implements SavingsAccountService {
 
         SavingsAccount ob = read();
 
-        if(ob != null)
+        if(ob != null) {
             AccountServiceImpl.getInstance().getAccountHashMap().put(ob.getIban(), ob);
+            CsvServiceImpl<SavingsAccount> csv = new CsvServiceImpl<>();
+            csv.write(ob);
+        }
     }
 }

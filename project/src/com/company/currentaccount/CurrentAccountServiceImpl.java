@@ -1,6 +1,8 @@
 package com.company.currentaccount;
 
-import com.company.Service;
+import com.company.customer.Customer;
+import com.company.service.CsvServiceImpl;
+import com.company.service.Service;
 import com.company.account.AccountServiceImpl;
 import com.company.transaction.Transaction;
 
@@ -84,6 +86,9 @@ public class CurrentAccountServiceImpl implements CurrentAccountService {
             AccountServiceImpl.getInstance().getAccountHashMap().put(ob.getIban(), ob);
 
             getCurrentAccountList().add(ob);
+
+            CsvServiceImpl<CurrentAccount> csv = new CsvServiceImpl<>();
+            csv.write(ob);
 
             return true;
         }

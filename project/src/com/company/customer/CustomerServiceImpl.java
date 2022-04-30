@@ -1,6 +1,8 @@
 package com.company.customer;
 
-import com.company.Service;
+import com.company.currentaccount.CurrentAccount;
+import com.company.service.CsvServiceImpl;
+import com.company.service.Service;
 import com.company.account.Account;
 import com.company.account.AccountServiceImpl;
 import com.company.address.Address;
@@ -68,6 +70,9 @@ public class CustomerServiceImpl implements CustomerService {
         PersonServiceImpl.getInstance().getPersonList().add(ob);
 
         CustomerServiceImpl.getInstance().getCustomerList().add(ob);
+
+        CsvServiceImpl<Customer> csv = new CsvServiceImpl<Customer>();
+        csv.write(ob);
     }
 
     public void update(Customer toUpdate){
