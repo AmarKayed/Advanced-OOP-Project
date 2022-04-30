@@ -1,6 +1,7 @@
 package com.company.service;
 
 import com.company.account.AccountServiceImpl;
+import com.company.audit.AuditServiceImpl;
 import com.company.currentaccount.CurrentAccountServiceImpl;
 import com.company.customer.CustomerServiceImpl;
 import com.company.person.PersonServiceImpl;
@@ -20,6 +21,7 @@ public class Service {
     private final CustomerServiceImpl customerService;
     private final CurrentAccountServiceImpl currentAccountService;
     private final TransactionServiceImpl transactionService;
+    private final AuditServiceImpl auditService;
 
     private Service(){
         // This is a singleton class
@@ -30,6 +32,7 @@ public class Service {
         customerService = CustomerServiceImpl.getInstance();
         currentAccountService = CurrentAccountServiceImpl.getInstance();
         transactionService = TransactionServiceImpl.getInstance();
+        auditService = AuditServiceImpl.getInstance();
 
     }
 
@@ -178,6 +181,7 @@ public class Service {
                 System.out.println("Invalid Command.");
                 break;
         }
+        auditService.log(selectedOption);
         run();
     }
 }

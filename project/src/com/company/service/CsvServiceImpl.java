@@ -43,7 +43,7 @@ public class CsvServiceImpl<T>{
         return result;
     }
 
-    public static void read() {
+    public void read() {
 
     }
 }

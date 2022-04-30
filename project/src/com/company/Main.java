@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.audit.AuditServiceImpl;
 import com.company.currentaccount.CurrentAccount;
 import com.company.currentaccount.CurrentAccountServiceImpl;
 import com.company.customer.Customer;
