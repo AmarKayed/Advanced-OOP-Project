@@ -5,8 +5,10 @@ import com.company.audit.AuditServiceImpl;
 import com.company.config.DatabaseConfiguration;
 import com.company.currentaccount.CurrentAccountServiceImpl;
 import com.company.customer.CustomerServiceImpl;
+import com.company.employee.Employee;
 import com.company.person.PersonServiceImpl;
 import com.company.repository.CustomerRepository;
+import com.company.repository.EmployeeRepository;
 import com.company.repository.PersonRepository;
 import com.company.transaction.TransactionServiceImpl;
 
@@ -82,13 +84,16 @@ public class Service {
 
     public void databaseInit(){
         PersonRepository personRepository = PersonRepository.getInstance();
+        CustomerRepository customerRepository = CustomerRepository.getInstance();
+        EmployeeRepository employeeRepository = EmployeeRepository.getInstance();
+
         personRepository.createTable();
 
 //        personRepository.addPerson();
 //        personRepository.displayPerson();
 
-        CustomerRepository customerRepository = CustomerRepository.getInstance();
         customerRepository.createTable();
+        employeeRepository.createTable();
 
         DatabaseConfiguration.closeDatabaseConnection();
     }
