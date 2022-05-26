@@ -15,6 +15,11 @@ public class Customer extends Person {
         super();
     }
 
+    public Customer(String firstName, String lastName, char gender, Address address, String job) {
+        super(firstName, lastName, gender);
+        this.address = address;
+        this.job = job;
+    }
 
     public Address getAddress() {
         return address;

@@ -2,9 +2,12 @@ package com.company.service;
 
 import com.company.account.AccountServiceImpl;
 import com.company.audit.AuditServiceImpl;
+import com.company.config.DatabaseConfiguration;
 import com.company.currentaccount.CurrentAccountServiceImpl;
 import com.company.customer.CustomerServiceImpl;
 import com.company.person.PersonServiceImpl;
+import com.company.repository.CustomerRepository;
+import com.company.repository.PersonRepository;
 import com.company.transaction.TransactionServiceImpl;
 
 import java.util.Scanner;
@@ -75,6 +78,19 @@ public class Service {
 
     public void loadCsvData(){
         System.out.println("I'm not sure how to implement this.");
+    }
+
+    public void databaseInit(){
+        PersonRepository personRepository = PersonRepository.getInstance();
+        personRepository.createTable();
+
+//        personRepository.addPerson();
+//        personRepository.displayPerson();
+
+        CustomerRepository customerRepository = CustomerRepository.getInstance();
+        customerRepository.createTable();
+
+        DatabaseConfiguration.closeDatabaseConnection();
     }
 
 

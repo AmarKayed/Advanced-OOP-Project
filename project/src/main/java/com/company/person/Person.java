@@ -15,6 +15,12 @@ public abstract class Person {
     public Person() {
         this.id = ++Person.nrOfPersons;
     }
+    public Person(String firstName, String lastName, char gender) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.id = ++Person.nrOfPersons;
+    }
 
 
     public static int getNrOfPersons() {
