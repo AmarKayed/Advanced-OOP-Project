@@ -37,11 +37,11 @@ public class EmployeeRepository {
 
 
     public void insertEmployee(Employee employee) {
-        String insertPersonSql = "INSERT INTO employee(firstName, lastName, gender, salary, hireDate) VALUES(?, ?, ?, ?, ?)";
+        String insertEmployeeSql = "INSERT INTO employee(firstName, lastName, gender, salary, hireDate) VALUES(?, ?, ?, ?, ?)";
 
         Connection connection = DatabaseConfiguration.getDatabaseConnection();
 
-        try (PreparedStatement preparedStatement = connection.prepareStatement(insertPersonSql)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(insertEmployeeSql)) {
             preparedStatement.setString(1, employee.getFirstName());
             preparedStatement.setString(2, employee.getLastName());
             preparedStatement.setString(3,employee.getGender() + "");

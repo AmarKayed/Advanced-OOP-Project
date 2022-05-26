@@ -34,11 +34,11 @@ public class TransactionRepository {
 
 
     public void insertTransaction(Transaction transaction) {
-        String insertPersonSql = "INSERT INTO transaction(iban, transactionDate, amount) VALUES(?, ?, ?)";
+        String insertTransactionSql = "INSERT INTO transaction(iban, transactionDate, amount) VALUES(?, ?, ?)";
 
         Connection connection = DatabaseConfiguration.getDatabaseConnection();
 
-        try (PreparedStatement preparedStatement = connection.prepareStatement(insertPersonSql)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(insertTransactionSql)) {
             preparedStatement.setInt(0, transaction.getIban());
             preparedStatement.setString(1, transaction.getTransactionDate());
             preparedStatement.setFloat(2,transaction.getAmount());

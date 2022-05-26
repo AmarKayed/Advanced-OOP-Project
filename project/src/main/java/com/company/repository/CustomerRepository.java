@@ -40,11 +40,11 @@ public class CustomerRepository {
 
 
     public void insertCustomer(Customer customer) {
-        String insertPersonSql = "INSERT INTO customer(firstName, lastName, gender, country, city, job) VALUES(?, ?, ?, ?, ?, ?)";
+        String insertCustomerSql = "INSERT INTO customer(firstName, lastName, gender, country, city, job) VALUES(?, ?, ?, ?, ?, ?)";
 
         Connection connection = DatabaseConfiguration.getDatabaseConnection();
 
-        try (PreparedStatement preparedStatement = connection.prepareStatement(insertPersonSql)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(insertCustomerSql)) {
             preparedStatement.setString(1, customer.getFirstName());
             preparedStatement.setString(2, customer.getLastName());
             preparedStatement.setString(3,customer.getGender() + "");
