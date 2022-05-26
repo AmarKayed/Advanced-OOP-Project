@@ -92,13 +92,18 @@ public class EmployeeRepository {
         }
     }
 
-    public void updateEmployeeName(String name, int id) {
-        String updateNameSql = "UPDATE employee SET name=? WHERE id=?";
+
+    public void updateEmployee(String firstName, String lastName, char gender, float salary, String hireDate, int id){
+        String updateNameSql = "UPDATE employee SET firstName=?, lastName=?, gender=?, salary=?, hireDate=? WHERE id=?";
 
         Connection connection = DatabaseConfiguration.getDatabaseConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(updateNameSql)) {
-            preparedStatement.setString(1, name);
-            preparedStatement.setInt(2, id);
+            preparedStatement.setString(1, firstName);
+            preparedStatement.setString(2, lastName);
+            preparedStatement.setString(3, gender + "");
+            preparedStatement.setFloat(4, salary);
+            preparedStatement.setString(5, hireDate);
+            preparedStatement.setInt(6, id);
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {

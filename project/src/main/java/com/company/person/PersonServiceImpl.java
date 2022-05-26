@@ -1,5 +1,6 @@
 package com.company.person;
 
+import com.company.repository.EmployeeRepository;
 import com.company.service.Service;
 import com.company.customer.Customer;
 import com.company.employee.Employee;
@@ -185,7 +186,8 @@ public class PersonServiceImpl implements PersonService {
         Person toDelete = personList.get(choice - 1);
         if (toDelete instanceof Customer)
             CustomerServiceImpl.getInstance().delete((Customer) toDelete);
-
+        else if (toDelete instanceof Employee)
+            EmployeeRepository.getInstance().deleteById(toDelete.getId());
         personList.remove(choice - 1);
 
     }

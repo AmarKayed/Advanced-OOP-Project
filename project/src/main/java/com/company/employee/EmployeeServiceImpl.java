@@ -108,5 +108,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         if(!hireDate.equals("_keep"))
             toUpdate.setHireDate(hireDate);
 
+        EmployeeRepository.getInstance().updateEmployee(toUpdate.getFirstName(), toUpdate.getLastName(), toUpdate.getGender(), toUpdate.getSalary(), toUpdate.getHireDate(), toUpdate.getId());
     }
 }
