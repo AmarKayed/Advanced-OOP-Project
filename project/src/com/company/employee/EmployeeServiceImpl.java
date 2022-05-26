@@ -1,6 +1,7 @@
 package com.company.employee;
 
-import com.company.Service;
+import com.company.service.CsvServiceImpl;
+import com.company.service.Service;
 import com.company.person.PersonServiceImpl;
 
 public class EmployeeServiceImpl implements EmployeeService {
@@ -56,6 +57,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee ob = EmployeeServiceImpl.getInstance().read();
 
         PersonServiceImpl.getInstance().getPersonList().add(ob);
+
+        CsvServiceImpl<Employee> csv = new CsvServiceImpl<>();
+        csv.write(ob);
     }
 
 

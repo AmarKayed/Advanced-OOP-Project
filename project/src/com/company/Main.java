@@ -1,7 +1,8 @@
 package com.company;
 
-public class Main {
+import com.company.service.Service;
 
+public class Main {
 
     public static void main(String[] args) {
 
@@ -10,6 +11,4 @@ public class Main {
         System.out.println("Back to Main.");
 
     }
-
-
 }

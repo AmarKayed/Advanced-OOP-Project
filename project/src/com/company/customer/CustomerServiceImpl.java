@@ -1,6 +1,7 @@
 package com.company.customer;
 
-import com.company.Service;
+import com.company.service.CsvServiceImpl;
+import com.company.service.Service;
 import com.company.account.Account;
 import com.company.account.AccountServiceImpl;
 import com.company.address.Address;
@@ -14,7 +15,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     private static CustomerServiceImpl instance;
 
-    private ArrayList<Customer> customerList;
+    private List<Customer> customerList;
 
     private CustomerServiceImpl() {customerList = new ArrayList<Customer>();}
 
@@ -24,7 +25,7 @@ public class CustomerServiceImpl implements CustomerService {
         return instance;
     }
 
-    public ArrayList<Customer> getCustomerList() {
+    public List<Customer> getCustomerList() {
         return customerList;
     }
 
@@ -68,6 +69,9 @@ public class CustomerServiceImpl implements CustomerService {
         PersonServiceImpl.getInstance().getPersonList().add(ob);
 
         CustomerServiceImpl.getInstance().getCustomerList().add(ob);
+
+        CsvServiceImpl<Customer> csv = new CsvServiceImpl<Customer>();
+        csv.write(ob);
     }
 
     public void update(Customer toUpdate){
@@ -95,7 +99,7 @@ public class CustomerServiceImpl implements CustomerService {
 
         int possibleID = 0;
 
-        HashMap<Integer, Account> map = AccountServiceImpl.getInstance().getAccountHashMap();
+        Map<Integer, Account> map = AccountServiceImpl.getInstance().getAccountHashMap();
         Set<Integer> removeKeys = new HashSet<>();          // We cannot remove multiple keys unless we store them in a Set/Collection
 
 

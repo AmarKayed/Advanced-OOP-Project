@@ -1,21 +1,21 @@
 package com.company.account;
 
-import com.company.Service;
+import com.company.service.Service;
 import com.company.currentaccount.CurrentAccount;
 import com.company.currentaccount.CurrentAccountServiceImpl;
 import com.company.savingsaccount.SavingsAccountServiceImpl;
 import com.company.customer.Customer;
 import com.company.customer.CustomerServiceImpl;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AccountServiceImpl implements AccountService {
 
     private static AccountServiceImpl instance;
 
-    private HashMap<Integer, Account> accountHashMap;
+    private Map<Integer, Account> accountHashMap;
 
     private AccountServiceImpl() {accountHashMap = new HashMap<Integer, Account>();}
 
@@ -25,12 +25,12 @@ public class AccountServiceImpl implements AccountService {
         return instance;
     }
 
-    public HashMap<Integer, Account> getAccountHashMap() {
+    public Map<Integer, Account> getAccountHashMap() {
         return accountHashMap;
     }
 
     public void closeAccount(int key){
-        HashMap<Integer, Account> accountHashMap = getAccountHashMap();
+        Map<Integer, Account> accountHashMap = getAccountHashMap();
         if(accountHashMap.get(key) instanceof CurrentAccount)
             CurrentAccountServiceImpl.getInstance().closeAccount((CurrentAccount) accountHashMap.get(key));
         accountHashMap.remove(key);
@@ -56,7 +56,7 @@ public class AccountServiceImpl implements AccountService {
     public Account read(Account ob){
         boolean chooseCustomer = true;  // Variable which determines whether we should choose a holder or not for our account
         int choice = 1; // Initially, we consider the chosen holder as being the first one that was added
-        ArrayList<Customer> customerList = CustomerServiceImpl.getInstance().getCustomerList();
+        List<Customer> customerList = CustomerServiceImpl.getInstance().getCustomerList();
 
         if(customerList.isEmpty()){
 

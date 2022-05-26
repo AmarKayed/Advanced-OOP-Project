@@ -1,6 +1,7 @@
-package com.company;
+package com.company.service;
 
 import com.company.account.AccountServiceImpl;
+import com.company.audit.AuditServiceImpl;
 import com.company.currentaccount.CurrentAccountServiceImpl;
 import com.company.customer.CustomerServiceImpl;
 import com.company.person.PersonServiceImpl;
@@ -13,6 +14,7 @@ public class Service {
     private static Service instance;
 
     private String selectedOption;
+    private boolean validOption;
     private final Scanner sc;
 
     private final PersonServiceImpl personService;
@@ -20,16 +22,19 @@ public class Service {
     private final CustomerServiceImpl customerService;
     private final CurrentAccountServiceImpl currentAccountService;
     private final TransactionServiceImpl transactionService;
+    private final AuditServiceImpl auditService;
 
     private Service(){
         // This is a singleton class
         sc = new Scanner(System.in);
+        validOption = true;
 
         personService = PersonServiceImpl.getInstance();
         accountService = AccountServiceImpl.getInstance();
         customerService = CustomerServiceImpl.getInstance();
         currentAccountService = CurrentAccountServiceImpl.getInstance();
         transactionService = TransactionServiceImpl.getInstance();
+        auditService = AuditServiceImpl.getInstance();
 
     }
 
@@ -50,6 +55,14 @@ public class Service {
         this.selectedOption = selectedOption;
     }
 
+    public boolean getValidOption() {
+        return validOption;
+    }
+
+    public void setValidOption(boolean validOption) {
+        this.validOption = validOption;
+    }
+
     // We won't be needing a setter for Scanner sc
 
     public Scanner getSc() {
@@ -58,6 +71,12 @@ public class Service {
 
 
     // Methods:
+
+
+    public void loadCsvData(){
+        System.out.println("I'm not sure how to implement this.");
+    }
+
 
     public int selectChoice(int limit){
         String input;
@@ -176,8 +195,12 @@ public class Service {
                 return;
             default:
                 System.out.println("Invalid Command.");
+                setValidOption(false);
                 break;
         }
+        if(validOption)
+            auditService.log(selectedOption);
+        setValidOption(true);
         run();
     }
 }
