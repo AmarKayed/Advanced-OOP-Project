@@ -10,6 +10,8 @@ import com.company.person.PersonServiceImpl;
 import com.company.repository.CustomerRepository;
 import com.company.repository.EmployeeRepository;
 import com.company.repository.PersonRepository;
+import com.company.repository.TransactionRepository;
+import com.company.transaction.Transaction;
 import com.company.transaction.TransactionServiceImpl;
 
 import java.util.Scanner;
@@ -86,7 +88,7 @@ public class Service {
         PersonRepository personRepository = PersonRepository.getInstance();
         CustomerRepository customerRepository = CustomerRepository.getInstance();
         EmployeeRepository employeeRepository = EmployeeRepository.getInstance();
-
+        TransactionRepository transactionRepository = TransactionRepository.getInstance();
         personRepository.createTable();
 
 //        personRepository.addPerson();
@@ -94,6 +96,7 @@ public class Service {
 
         customerRepository.createTable();
         employeeRepository.createTable();
+        transactionRepository.createTable();
 
         DatabaseConfiguration.closeDatabaseConnection();
     }
