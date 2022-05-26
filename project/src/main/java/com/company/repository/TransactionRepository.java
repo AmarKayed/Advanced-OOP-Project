@@ -18,7 +18,8 @@ public class TransactionRepository {
 
     public void createTable() {
         String createTableSql = "CREATE TABLE IF NOT EXISTS transaction " +
-                "(iban int PRIMARY KEY AUTO_INCREMENT, " +
+                "(id int PRIMARY KEY AUTO_INCREMENT, " +
+                "iban int, " +
                 "transactionDate varchar(30), " +
                 "amount float(10,2))";
 
@@ -39,9 +40,9 @@ public class TransactionRepository {
         Connection connection = DatabaseConfiguration.getDatabaseConnection();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertTransactionSql)) {
-            preparedStatement.setInt(0, transaction.getIban());
-            preparedStatement.setString(1, transaction.getTransactionDate());
-            preparedStatement.setFloat(2,transaction.getAmount());
+            preparedStatement.setInt(1, transaction.getIban());
+            preparedStatement.setString(2, transaction.getTransactionDate());
+            preparedStatement.setFloat(3,transaction.getAmount());
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -73,9 +74,9 @@ public class TransactionRepository {
         try (Statement stmt = connection.createStatement()) { //try with resources
             ResultSet resultSet = stmt.executeQuery(selectSql);
             while (resultSet.next()) {
-                System.out.println("IBAN:" + resultSet.getInt(0));
-                System.out.println("transactionDate" + resultSet.getString(1));
-                System.out.println("Amount" + resultSet.getFloat(2));
+                System.out.println("IBAN:" + resultSet.getInt(1));
+                System.out.println("transactionDate" + resultSet.getString(2));
+                System.out.println("Amount" + resultSet.getFloat(3));
 
             }
 
@@ -84,13 +85,13 @@ public class TransactionRepository {
         }
     }
 
-    public void updateTransactionDate(String transactionDate, int iban) {
-        String updateTransactionDateSql = "UPDATE transaction SET transactionDate=? WHERE iban=?";
+    public void updateTransactionDate(String transactionDate, int id) {
+        String updateTransactionDateSql = "UPDATE transaction SET transactionDate=? WHERE id=?";
 
         Connection connection = DatabaseConfiguration.getDatabaseConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(updateTransactionDateSql)) {
             preparedStatement.setString(1, transactionDate);
-            preparedStatement.setInt(2, iban);
+            preparedStatement.setInt(2, id);
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -98,12 +99,12 @@ public class TransactionRepository {
         }
     }
 
-    public void deleteById(int iban) {
-        String query = "DELETE FROM transaction WHERE iban=?";
+    public void deleteById(int id) {
+        String query = "DELETE FROM transaction WHERE id=?";
 
         Connection connection = DatabaseConfiguration.getDatabaseConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1, iban);
+            preparedStatement.setInt(1, id);
 
             preparedStatement.executeUpdate();
 
@@ -116,7 +117,7 @@ public class TransactionRepository {
 
     private Transaction mapToTransaction(ResultSet resultSet) throws SQLException {
         if (resultSet.next()) {
-            return new Transaction(resultSet.getInt(0), resultSet.getString(2), resultSet.getFloat(3));
+            return new Transaction(resultSet.getInt(1), resultSet.getString(2), resultSet.getFloat(3));
         }
         return null;
     }

@@ -1,5 +1,7 @@
 package com.company.customer;
 
+import com.company.repository.AddressRepository;
+import com.company.repository.CustomerRepository;
 import com.company.service.CsvServiceImpl;
 import com.company.service.Service;
 import com.company.account.Account;
@@ -72,6 +74,10 @@ public class CustomerServiceImpl implements CustomerService {
 
         CsvServiceImpl<Customer> csv = new CsvServiceImpl<Customer>();
         csv.write(ob);
+
+        AddressRepository.getInstance().insertAddress(ob.getAddress().getCountry(), ob.getAddress().getCity());
+
+        CustomerRepository.getInstance().insertCustomer(ob);
     }
 
     public void update(Customer toUpdate){

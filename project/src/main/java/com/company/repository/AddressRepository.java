@@ -34,14 +34,14 @@ public class AddressRepository {
 
 
 
-    public void insertAddress(Address address) {
-        String insertAddressSql = "INSERT INTO transaction(iban, transactionDate, amount) VALUES(?, ?, ?)";
+    public void insertAddress(String country, String city) {
+        String insertAddressSql = "INSERT INTO address(country, city) VALUES(?, ?)";
 
         Connection connection = DatabaseConfiguration.getDatabaseConnection();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertAddressSql)) {
-            preparedStatement.setString(1, address.getCountry());
-            preparedStatement.setString(2, address.getCity());
+            preparedStatement.setString(1, country);
+            preparedStatement.setString(2, city);
 
 
             preparedStatement.executeUpdate();

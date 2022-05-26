@@ -1,5 +1,6 @@
 package com.company.transaction;
 
+import com.company.repository.TransactionRepository;
 import com.company.service.CsvServiceImpl;
 import com.company.service.Service;
 import com.company.currentaccount.CurrentAccount;
@@ -86,6 +87,8 @@ public class TransactionServiceImpl implements TransactionService {
 
         CsvServiceImpl<Transaction> csv = new CsvServiceImpl<>();
         csv.write(ob);
+
+        TransactionRepository.getInstance().insertTransaction(ob);
 
         System.out.println(currentAccountList.get(choice - 1));
 

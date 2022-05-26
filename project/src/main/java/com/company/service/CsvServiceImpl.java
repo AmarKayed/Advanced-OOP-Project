@@ -34,7 +34,7 @@ public class CsvServiceImpl<T>{
     }
 
     public void write(T ob) {
-        String filePath = "src\\com\\company\\resources\\" + ob.getClass().getSimpleName() + ".csv";
+        String filePath = "src\\main\\java\\com\\company\\resources\\" + ob.getClass().getSimpleName() + ".csv";
 
         try (FileWriter pw = new FileWriter(filePath, true)) {
             File file = new File(filePath);
@@ -50,7 +50,7 @@ public class CsvServiceImpl<T>{
     }
 
     public List<List<String>> read(T ob) {
-        String filePath = "src\\com\\company\\resources\\" + ob.getClass().getSimpleName() + ".csv";
+        String filePath = "src\\main\\java\\com\\company\\resources\\" + ob.getClass().getSimpleName() + ".csv";
 
         List<List<String>> content = new ArrayList<>();
 
@@ -69,7 +69,7 @@ public class CsvServiceImpl<T>{
     }
 
     public boolean contains(T ob,String log){
-        String filePath = "src\\com\\company\\resources\\" + ob.getClass().getSimpleName() + ".csv";
+        String filePath = "src\\main\\java\\com\\company\\resources\\" + ob.getClass().getSimpleName() + ".csv";
 
         try (FileInputStream in = new FileInputStream(filePath)) {
             Scanner sc = new Scanner(in);

@@ -29,7 +29,7 @@ public class AuditServiceImpl implements AuditService{
 
     @Override
     public void log(String option) {
-        String filePath = "src\\com\\company\\resources\\audit.csv";
+        String filePath = "src\\main\\java\\com\\company\\resources\\audit.csv";
         try{
             File file = new File(filePath);
             if(file.createNewFile()){

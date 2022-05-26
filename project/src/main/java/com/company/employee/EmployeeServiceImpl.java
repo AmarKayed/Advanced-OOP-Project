@@ -1,5 +1,6 @@
 package com.company.employee;
 
+import com.company.repository.EmployeeRepository;
 import com.company.service.CsvServiceImpl;
 import com.company.service.Service;
 import com.company.person.PersonServiceImpl;
@@ -60,6 +61,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         CsvServiceImpl<Employee> csv = new CsvServiceImpl<>();
         csv.write(ob);
+
+        EmployeeRepository.getInstance().insertEmployee(ob);
     }
 
 
