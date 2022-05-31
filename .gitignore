@@ -6,5 +6,5 @@ out/
 *.iws
 
 /draftFiles
-/project/src/com/company/draftignore
+draftignore
 audit.csv

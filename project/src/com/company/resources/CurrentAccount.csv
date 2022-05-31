@@ -1,4 +1,0 @@
-iban;openDate;holderId;holderFirstName;holderLastName;holderGender;holderAddressCountry;holderAddressCity;holderJob;balance;commission;transactionHistory
-1;24 MAR 2019;1;Robert;Downey;M;USA;Florida;Actor;3940.0;8.0;[]
-4;31 AUG 2020;1;Robert;Downey;M;USA;Florida;Actor;1000.0;10.0;[]
-5;15 MAY 1988;4;Johnny;Xina;M;USA;New York City;Wrestler;5005.0;2.0;[]
